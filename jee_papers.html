@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>MGK JEE Papers</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    overflow-x:hidden;
+}
+
+h1 {
+    text-align:center;
+    padding:20px;
+    font-size:28px;
+    letter-spacing:1px;
+}
+
+/* GRID */
+.container {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+/* CARD */
+.card {
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.1);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    transition:0.4s;
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 0 10px rgba(0,0,0,0.5);
+    position:relative;
+}
+
+/* GLOW EFFECT */
+.card::before {
+    content:"";
+    position:absolute;
+    top:-2px;
+    left:-2px;
+    right:-2px;
+    bottom:-2px;
+    background: linear-gradient(45deg,#00f,#0ff,#0f0,#ff0,#f00);
+    border-radius:20px;
+    z-index:-1;
+    filter:blur(15px);
+    opacity:0;
+    transition:0.4s;
+}
+
+.card:hover::before {
+    opacity:1;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+/* TEXT */
+.paper-title {
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.paper-btn {
+    padding:8px 15px;
+    background:#00c6ff;
+    border-radius:20px;
+    color:black;
+    font-weight:bold;
+    display:inline-block;
+}
+
+/* LINK RESET */
+a {
+    text-decoration:none;
+    color:inherit;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🚀 MGK JEE MAINS 2024 PAPERS</h1>
+
+<div class="container">
+
+<a href="jee2024_p1.pdf"><div class="card">
+<div class="paper-title">📘 Paper 1</div>
+<div class="paper-btn">Open</div>
+</div></a>
+
+<a href="jee2024_p2.pdf"><div class="card">
+<div class="paper-title">📘 Paper 2</div>
+<div class="paper-btn">Open</div>
+</div></a>
+
+<a href="jee2024_p3.pdf"><div class="card">
+<div class="paper-title">📘 Paper 3</div>
+<div class="paper-btn">Open</div>
+</div></a>
+
+<a href="jee2024_p4.pdf"><div class="card">
+<div class="paper-title">📘 Paper 4</div>
+<div class="paper-btn">Open</div>
+</div></a>
+
+<a href="jee2024_p5.pdf"><div class="card">
+<div class="paper-title">📘 Paper 5</div>
+<div class="paper-btn">Open</div>
+</div></a>
+
+<a href="jee2024_p6.pdf"><div class="card">
+<div class="paper-title">📘 Paper 6</div>
+<div class="paper-btn">Open</div>
+</div></a>
+
+<a href="jee2024_p7.pdf"><div class="card">
+<div class="paper-title">📘 Paper 7</div>
+<div class="paper-btn">Open</div>
+</div></a>
+
+<a href="jee2024_p8.pdf"><div class="card">
+<div class="paper-title">📘 Paper 8</div>
+<div class="paper-btn">Open</div>
+</div></a>
+
+<a href="jee2024_p9.pdf"><div class="card">
+<div class="paper-title">📘 Paper 9</div>
+<div class="paper-btn">Open</div>
+</div></a>
+
+</div>
+
+</body>
+</html>
