@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mathematics Study Portal - Floral Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(173, 216, 230, 0.2) 0%, transparent 20%),
+                url('https://www.transparenttextures.com/patterns/floral-paper.png');
+            color: #333;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 40px 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #d81b60;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            border: 2px solid #fce4ec;
+            overflow: hidden;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.2);
+            border-color: #f06292;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #f06292, #ba68c8);
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        .ch-name {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .section-frame {
+            background: #fffafa;
+            border: 1px solid #f8bbd0;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #ad1457;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .btn-grid a {
+            text-decoration: none;
+            color: #444;
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            text-align: center;
+            border: 1px solid #eeeeee;
+            transition: 0.2s;
+        }
+
+        .btn-grid a:hover {
+            background: #f06292;
+            color: white;
+            border-color: #f06292;
+        }
+
+        .easy:hover { border-bottom: 3px solid #66bb6a !important; }
+        .medium:hover { border-bottom: 3px solid #ffa726 !important; }
+        .tough:hover { border-bottom: 3px solid #ef5350 !important; }
+
+        .pyq-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        select {
+            flex: 1;
+            background: #ffffff;
+            color: #333;
+            border: 1px solid #f8bbd0;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .card::after {
+            content: '🌸';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 20px;
+            opacity: 0.3;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            color: #d81b60;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📐 Maths Resource Portal</h1>
+
+    <div class="container" id="maths-list"></div>
+
+    <a href="index.html" class="back-home">⬅ Back to Home</a>
+
+    <script>
+        // MATHS DATA: Tumhare purane links yahan 'fn' (Full Notes) mein hain
+        const mathsData = [
+            { name: "Relations & Functions", sn: "#", fn: "https://drive.google.com/file/d/1UCHS0rsWsh-MYvGNu5-dt3afrLVGZX_-/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Basic Maths", sn: "#", fn: "https://drive.google.com/file/d/1K-AnKyLpu8eyfVq9Sq8NMz1kx-nR9CNA/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Quadratic Equation", sn: "#", fn: "https://drive.google.com/file/d/1J3u-EWKAYOCx7NOtdRvvQQXAMQqkkk2K/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Sequences & Series", sn: "#", fn: "https://drive.google.com/file/d/1XxsfkGQsQGILsPtTq2bokQEmNXJbfgRD/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Inverse Trigonometry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Matrices", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Determinants", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Continuity & Differentiability", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Applications of Derivatives", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Integrals", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Applications of Integrals", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Differential Equations", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Vectors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "3D Geometry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Probability", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Statistics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Complex Numbers", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Binomial Theorem", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Limits", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Permutations & Combinations", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" }
+        ];
+
+        const container = document.getElementById('maths-list');
+
+        mathsData.forEach(ch => {
+            let years = "";
+            for (let y = 2026; y >= 2015; y--) {
+                years += `<option value="paper-${ch.name}-${y}.html">${y} Paper</option>`;
+            }
+
+            const card = `
+            <div class="card">
+                <div class="card-header"><h2 class="ch-name">${ch.name}</h2></div>
+                <div class="card-body">
+                    <div class="section-frame">
+                        <span class="section-label">📚 Lectures & Notes</span>
+                        <div class="btn-grid">
+                            <a href="${ch.sn}" target="_blank">Short Notes</a>
+                            <a href="${ch.fn}" target="_blank">Full Notes</a>
+                            <a href="${ch.mm}" target="_blank">Mind Maps</a>
+                            <a href="${ch.ft}" target="_blank">Finger Tips</a>
+                        </div>
+                    </div>
+                    <div class="section-frame">
+                        <span class="section-label">✍️ Practice (Level Wise)</span>
+                        <div class="btn-grid">
+                            <a href="${ch.e}" class="easy" target="_blank">Easy Level</a>
+                            <a href="${ch.m}" class="medium" target="_blank">Medium Level</a>
+                            <a href="${ch.t}" class="tough" target="_blank">Tough Level</a>
+                        </div>
+                    </div>
+                    <div class="section-frame">
+                        <span class="section-label">📖 Books & Solutions</span>
+                        <div class="btn-grid">
+                            <a href="${ch.hn}" target="_blank">Maths Notes</a>
+                            <a href="${ch.hq}" target="_blank">Maths Ques</a>
+                            <a href="${ch.in}" target="_blank">Adv Notes</a>
+                            <a href="${ch.iq}" target="_blank">Adv Ques</a>
+                        </div>
+                    </div>
+                    <div class="section-frame">
+                        <span class="section-label">🎯 PYQ Archives (2015-2026)</span>
+                        <div class="pyq-row">
+                            <select onchange="if(this.value) window.open(this.value)"><option value="">JEE Mains</option>${years}</select>
+                            <select onchange="if(this.value) window.open(this.value)"><option value="">JEE Adv</option>${years}</select>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            container.innerHTML += card;
+        });
+    </script>
+
+    <script src="https://utteranc.es/client.js"
+            repo="ritikkumawatmg2810-afk/mgk-study"
+            issue-term="pathname"
+            label="Comments"
+            theme="github-dark"
+            crossorigin="anonymous"
+            async>
+    </script>
+</body>
+</html>
