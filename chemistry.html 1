@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chemistry Study Portal - Floral Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(173, 216, 230, 0.2) 0%, transparent 20%),
+                url('https://www.transparenttextures.com/patterns/floral-paper.png');
+            color: #333;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 40px 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #d81b60;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            border: 2px solid #fce4ec;
+            overflow: hidden;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.2);
+            border-color: #f06292;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #f06292, #ba68c8);
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        .ch-name {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .section-frame {
+            background: #fffafa;
+            border: 1px solid #f8bbd0;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #ad1457;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .btn-grid a {
+            text-decoration: none;
+            color: #444;
+            background: #ffffff;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            text-align: center;
+            border: 1px solid #eeeeee;
+            transition: 0.2s;
+        }
+
+        .btn-grid a:hover {
+            background: #f06292;
+            color: white;
+            border-color: #f06292;
+        }
+
+        .easy:hover { border-bottom: 3px solid #66bb6a !important; }
+        .medium:hover { border-bottom: 3px solid #ffa726 !important; }
+        .tough:hover { border-bottom: 3px solid #ef5350 !important; }
+
+        .pyq-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        select {
+            flex: 1;
+            background: #ffffff;
+            color: #333;
+            border: 1px solid #f8bbd0;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .card::after {
+            content: '🌸';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 20px;
+            opacity: 0.3;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin: 20px;
+            color: #d81b60;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🧪 Chemistry Resource Portal</h1>
+
+    <div class="container" id="chem-list"></div>
+
+    <a href="index.html" class="back-home">⬅ Back to Home</a>
+
+    <script>
+        // DATA STRUCTURE: Aapke chapters aur links yahan merge hain
+        const chemData = [
+            { name: "Atomic Structure", sn: "#", fn: "https://drive.google.com/file/d/1TDHrhvw6Z54f6fDiYoNRY0DNdlI-bVuS/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Mole Concept", sn: "#", fn: "https://drive.google.com/file/d/1F8llwTGkfue7HZqBA_ZWGyZRu0cOA4K2/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Periodic Table", sn: "#", fn: "https://drive.google.com/file/d/1F7PGoq93WtegPen25cMLDpUqxfHDvZFd/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Chemical Bonding", sn: "#", fn: "https://drive.google.com/file/d/1qOm9H_O9_TySMjLrMM8OLnlw76BRb5Z4/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Redox Reaction", sn: "#", fn: "https://drive.google.com/file/d/1HZj3oLZTnlW76H_C40V_pajEa1ARK0px/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "General Organic Chemistry", sn: "#", fn: "https://drive.google.com/file/d/1egeVKA6bUNFLFeoH0vU0UXy4_MQMsvvi/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "IUPAC Nomenclature", sn: "#", fn: "https://drive.google.com/file/d/1fFCMoX35A5wHnTlcUz9GSzhk-4Z85h1A/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Isomerism", sn: "#", fn: "https://drive.google.com/file/d/1VmKfekSXdHnOgiU-0viBIRBShzEkckLA/preview", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "States of Matter", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Solutions", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Electrochemistry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Chemical Kinetics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Surface Chemistry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Organic Chemistry Basics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Hydrocarbons", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Alcohols Phenols Ethers", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Aldehydes Ketones", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Amines", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Biomolecules", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
+            { name: "Polymers", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" }
+        ];
+
+        const container = document.getElementById('chem-list');
+
+        chemData.forEach(ch => {
+            let years = "";
+            for (let y = 2026; y >= 2015; y--) {
+                years += `<option value="paper-${ch.name}-${y}.html">${y} Paper</option>`;
+            }
+
+            const card = `
+            <div class="card">
+                <div class="card-header"><h2 class="ch-name">${ch.name}</h2></div>
+                <div class="card-body">
+                    <div class="section-frame">
+                        <span class="section-label">📚 Lectures & Notes</span>
+                        <div class="btn-grid">
+                            <a href="${ch.sn}" target="_blank">Short Notes</a>
+                            <a href="${ch.fn}" target="_blank">Full Notes</a>
+                            <a href="${ch.mm}" target="_blank">Mind Maps</a>
+                            <a href="${ch.ft}" target="_blank">Finger Tips</a>
+                        </div>
+                    </div>
+                    <div class="section-frame">
+                        <span class="section-label">✍️ Practice (Level Wise)</span>
+                        <div class="btn-grid">
+                            <a href="${ch.e}" class="easy" target="_blank">Easy Level</a>
+                            <a href="${ch.m}" class="medium" target="_blank">Medium Level</a>
+                            <a href="${ch.t}" class="tough" target="_blank">Tough Level</a>
+                        </div>
+                    </div>
+                    <div class="section-frame">
+                        <span class="section-label">📖 Books & Solutions</span>
+                        <div class="btn-grid">
+                            <a href="${ch.hn}" target="_blank">HCV Notes</a>
+                            <a href="${ch.hq}" target="_blank">HCV Questions</a>
+                            <a href="${ch.in}" target="_blank">Irodov Notes</a>
+                            <a href="${ch.iq}" target="_blank">Irodov Questions</a>
+                        </div>
+                    </div>
+                    <div class="section-frame">
+                        <span class="section-label">🎯 PYQ Archives (2015-2026)</span>
+                        <div class="pyq-row">
+                            <select onchange="if(this.value) window.open(this.value)"><option value="">JEE Mains</option>${years}</select>
+                            <select onchange="if(this.value) window.open(this.value)"><option value="">JEE Adv</option>${years}</select>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            container.innerHTML += card;
+        });
+    </script>
+
+    <script src="https://utteranc.es/client.js"
+            repo="ritikkumawatmg2810-afk/mgk-study"
+            issue-term="pathname"
+            label="Comments"
+            theme="github-dark"
+            crossorigin="anonymous"
+            async>
+    </script>
+</body>
+</html>
