@@ -1,301 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><meta name="google-site-verification" content="8tRiqG6-hq2I2y4kqWqKKtqJUOD8BVc-PCBiu7G_nZ8" />
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MGK JEE Study Hub | Path to IIT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MGK JEE | Hindi & English Medium Studies</title>
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI'; }
-body { background-color: #f4f7f6; color: #333; }
+:root {
+  --primary: #002244;
+  --accent: #ff6600;
+  --ai-ui: #8e44ad;
+  --bg: #f0f2f5;
+  --card-bg: #ffffff;
+  --text: #333;
+}
 
-/* HEADER */
+.dark-theme {
+  --primary: #0a0a0a;
+  --bg: #121212;
+  --card-bg: #1e1e1e;
+  --text: #e0e0e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Noto Sans Devanagari', sans-serif; transition: 0.3s ease; }
+body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+/* APP HEADER */
 header {
-  background: #003366;
-  color: white;
-  padding: 1rem 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  background: var(--primary); color: white; padding: 12px 5%;
+  display: flex; justify-content: space-between; align-items: center;
+  position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+.app-name { font-weight: 800; font-size: 0.9rem; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px; }
 
-/* NAV */
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  font-weight: bold;
-}
-
-/* HERO */
+/* HERO SECTION */
 .hero {
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-  url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1350&q=80');
-  height: 60vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 20px;
+  background: linear-gradient(135deg, var(--primary), #004a99);
+  color: white; padding: 25px 5%; text-align: center; border-radius: 0 0 30px 30px;
 }
 
-.hero h1 { font-size: 3rem; }
+/* TOP CONTROLS */
+.controls { display: flex; gap: 8px; }
+.btn-ctrl { background: #444; color: white; border: none; padding: 6px 12px; border-radius: 12px; font-size: 10px; font-weight: bold; cursor: pointer; }
+.btn-lang { background: var(--accent); border: 2px solid white; }
 
-/* BUTTON */
-.btn {
-  background: #ff6600;
-  color: white;
-  padding: 12px 30px;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 20px;
-  display:inline-block;
-  cursor: pointer;
-  border: none;
-}
+/* DOWNLOAD BOX */
+.dl-box { background: var(--card-bg); margin: 15px 5%; padding: 15px; border-radius: 18px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+.dl-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #44444422; padding-bottom: 8px; }
+.dl-list { font-size: 11px; margin-top: 8px; max-height: 80px; overflow-y: auto; }
 
-/* FEATURES */
-.features {
-  display: flex;
-  justify-content: space-around;
-  padding: 40px 5%;
-  background: white;
-  flex-wrap: wrap;
-}
+/* MAIN DASHBOARD */
+.features { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px 5%; }
+.card { background: var(--card-bg); padding: 20px; border-radius: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid transparent; }
+.card:active { transform: scale(0.95); }
+.card i { font-size: 28px; display: block; margin-bottom: 8px; }
 
-.feature-card {
-  width: 280px;
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: 0.3s;
-  background: #fff;
-  color: #333;
-}
+/* OVERLAY UI */
+.overlay { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 2000; overflow-y: auto; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.overlay-header { background: var(--primary); color: white; padding: 18px; display: flex; align-items: center; position: sticky; top: 0; z-index: 10; }
+.back-btn { font-size: 28px; margin-right: 15px; cursor: pointer; background:none; border:none; color:white; }
 
-.feature-card:hover {
-  transform: scale(1.05);
-  background: #f0f7ff;
-}
+/* CHAPTER CARDS */
+.item-card { margin: 12px; padding: 15px; background: var(--card-bg); border-radius: 15px; border: 1px solid rgba(128,128,128,0.2); }
+.grid-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.btn-ui { padding: 10px; border-radius: 8px; border: none; font-size: 10px; font-weight: 700; cursor: pointer; background: #f0f0f0; color: #333; }
+.btn-mains { border-left: 4px solid #3498db; }
+.btn-adv { border-left: 4px solid #e74c3c; }
+.dl-btn { background: var(--accent) !important; color: white !important; grid-column: span 2; }
 
-/* --- MOCK TEST SYSTEM OVERLAY --- */
-#testPortal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #fff;
-  z-index: 1000;
-  overflow-y: auto;
-}
+/* FAB */
+.fab { position: fixed; bottom: 25px; right: 25px; background: var(--ai-ui); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 8px 20px rgba(142,68,173,0.4); z-index: 999; cursor: pointer; border: 2px solid white; }
 
-.portal-header {
-  background: #003366;
-  color: white;
-  padding: 15px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-}
-
-.tab-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 20px;
-  background: #eee;
-}
-
-.tab-btn {
-  padding: 10px 25px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  background: #ddd;
-}
-
-.tab-btn.active {
-  background: #ff6600;
-  color: white;
-}
-
-.test-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 15px;
-  padding: 20px 5%;
-}
-
-.year-card {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 20px;
-  text-align: center;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-
-.year-card:hover { border-color: #ff6600; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.year-card h3 { font-size: 20px; margin-bottom: 10px; }
-
-.start-btn {
-  background: #003366;
-  color: white;
-  border: none;
-  padding: 5px 15px;
-  border-radius: 4px;
-  font-size: 12px;
-  text-decoration: none;
-  display:inline-block;
-}
-
-/* SEARCH */
-.search-box { text-align:center; margin:20px; }
-input { padding:10px; width:80%; max-width:400px; border: 1px solid #ddd; border-radius: 5px;}
-
-footer { background:#222; color:white; text-align:center; padding:20px; }
-
-@media (max-width:768px){
-  .hero h1 { font-size:22px; }
-  .features { flex-direction:column; align-items:center; }
-}
+footer { text-align: center; padding: 25px; font-size: 10px; opacity: 0.5; font-weight: bold; }
 </style>
 </head>
-
 <body>
 
 <header>
-  <h2>MGK JEE Study Hub</h2>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#" onclick="openPortal()">Mock Test</a>
-    <a href="leaderboard.html">Leaderboard</a>
-  </nav>
+  <div class="app-name">MGK JEE<br><span style="font-size: 9px; opacity: 0.8;">HINDI & ENGLISH MEDIUM</span></div>
+  <div class="controls">
+    <button class="btn-ctrl btn-lang" onclick="toggleLang()" id="langBtn">हिन्दी 🇮🇳</button>
+    <button class="btn-ctrl" onclick="toggleTheme()">🌓 MODE</button>
+    <div onclick="openAI()" style="cursor:pointer; font-size:20px; margin-left:5px;">🤖</div>
+  </div>
 </header>
 
 <section class="hero">
-  <h1>Master the JEE with MGK 🚀</h1>
-  <p>Free Notes | Tests | AI Doubt Solver</p>
-  <button onclick="openPortal()" class="btn">🔥 Start Test</button>
+  <h2 id="heroTitle">IIT-JEE 2026 HUB</h2>
+  <p id="heroSub">Your Ultimate Study Partner</p>
 </section>
 
-<div class="search-box">
-  <input type="text" id="search" placeholder="Search Chapter...">
+<div class="dl-box">
+  <div class="dl-head"><h4 id="dlTitle">📥 My Downloads</h4><span id="dl-count" style="background:var(--accent); color:white; padding:2px 8px; border-radius:10px; font-size:10px;">0</span></div>
+  <div id="dlList" class="dl-list"></div>
 </div>
 
-<section class="features">
-
-<a href="physics.html">
-  <div class="feature-card">📘 Physics Notes</div>
-</a>
-
-<a href="chemistry.html">
-  <div class="feature-card">🧪 Chemistry Notes</div>
-</a>
-
-<a href="maths.html">
-  <div class="feature-card">📗 Maths Notes</div>
-</a>
-
-<div class="feature-card" onclick="openPortal()" style="cursor:pointer; border: 2px solid #ff6600;">
-📝 Mock Tests
+<div class="features">
+  <div class="card" onclick="openSub('Physics')"><i>📘</i><h3 id="txt-phy">Physics</h3></div>
+  <div class="card" onclick="openSub('Chemistry')"><i>🧪</i><h3 id="txt-chem">Chemistry</h3></div>
+  <div class="card" onclick="openSub('Maths')"><i>📗</i><h3 id="txt-math">Maths</h3></div>
+  <div class="card" onclick="openLib()"><i>📚</i><h3 id="txt-lib">Library</h3></div>
+  <div class="card" onclick="openTestPortal()"><i>📝</i><h3 id="txt-test">Test Hub</h3></div>
+  <div class="card" onclick="openAI()"><i>🧠</i><h3 id="txt-ai">AI Solver</h3></div>
 </div>
 
-<a href="leaderboard.html">
-  <div class="feature-card">🏆 Leaderboard</div>
-</a>
+<div id="masterOverlay" class="overlay">
+  <div class="overlay-header"><button class="back-btn" onclick="closeOverlay('masterOverlay')">←</button><h3 id="overlayTitle">View</h3></div>
+  <div id="overlayContent"></div>
+</div>
 
-<div class="feature-card">🤖 AI Doubt Solver</div>
-
-</section>
-
-<div id="testPortal">
-  <div class="portal-header">
-    <h2>JEE TEST PORTAL</h2>
-    <button onclick="closePortal()" style="background:none; border:none; color:white; font-size:30px;">&times;</button>
+<div id="aiOverlay" class="overlay">
+  <div class="overlay-header"><button class="back-btn" onclick="closeOverlay('aiOverlay')">←</button><h3 id="txt-aiHead">AI Solver</h3></div>
+  <div style="padding: 20px; text-align: center;">
+    <textarea id="aiInput" placeholder="..." style="width:100%; height:200px; padding:15px; border-radius:15px; background:var(--card-bg); color:var(--text); border:1px solid #555; font-size:16px; outline:none;"></textarea>
+    <button onclick="solveAI()" id="solveBtn" style="width:100%; background:var(--ai-ui); color:white; padding:15px; border:none; border-radius:15px; margin-top:15px; font-weight:bold; font-size: 16px;">SOLVE NOW 🚀</button>
   </div>
-
-  <div class="tab-container">
-    <button id="mainsBtn" class="tab-btn active" onclick="showType('mains')">JEE MAINS</button>
-    <button id="advBtn" class="tab-btn" onclick="showType('adv')">JEE ADVANCED</button>
-  </div>
-
-  <div id="mainsSection" class="test-grid"></div>
-  <div id="advSection" class="test-grid" style="display:none;"></div>
 </div>
 
-<footer>
-  <p>© 2026 MGK JEE Study Hub 🚀</p>
-</footer>
+<div class="fab" onclick="openAI()">🤖</div>
+
+<footer>© 2026 MGK JEE HINDI & ENGLISH MEDIUM STUDIES</footer>
 
 <script>
-const mainsBox = document.getElementById('mainsSection');
-const advBox = document.getElementById('advSection');
+let currentLang = 'EN';
+let downloads = [];
 
-function loadTests() {
-  for(let y=2026; y>=2015; y--) {
-
-    let mainsLink = "#";
-    let text = "COMING SOON";
-
-    if(y == 2024){
-      mainsLink = "https://docs.google.com/forms/d/e/1FAIpQLSdhy3vlUzFU8MdchRVvPTIUXaijGUpUTinw37_DTkOTgJ2aGA/viewform";
-      text = "START TEST";
+const content = {
+    'EN': {
+        heroTitle: 'IIT-JEE 2026 HUB', heroSub: 'Integrated Mains & Adv Portal', dlTitle: '📥 My Downloads',
+        phy: 'Physics', chem: 'Chemistry', math: 'Maths', lib: 'Library', test: 'Test Hub', ai: 'AI Solver',
+        mains: 'Mains Questions', adv: 'Advanced Questions', short: 'Short Notes', full: 'Full Notes', dl: 'Download PDF',
+        solve: 'SOLVE NOW 🚀', aiPlace: 'Paste your JEE doubt here...', back: 'Back',
+        subjects: {
+            "Physics": ["Units & Dimensions", "Kinematics", "Laws of Motion", "Work & Energy", "Rotational Motion", "Gravitation", "Thermodynamics", "Electrostatics", "Current Electricity", "Optics", "Modern Physics"],
+            "Chemistry": ["Atomic Structure", "Chemical Bonding", "Thermodynamics", "Equilibrium", "Electrochemistry", "p-Block Elements", "General Organic", "Hydrocarbons"],
+            "Maths": ["Sets & Functions", "Matrices", "Determinants", "Calculus", "Coordinate Geometry", "Vectors & 3D", "Trigonometry", "Probability"]
+        }
+    },
+    'HI': {
+        heroTitle: 'IIT-JEE 2026 हब', heroSub: 'मेंस और एडवांस पोर्टल', dlTitle: '📥 मेरी डाउनलोड्स',
+        phy: 'भौतिकी', chem: 'रसायन', math: 'गणित', lib: 'लाइब्रेरी', test: 'टेस्ट हब', ai: 'AI सॉल्वर',
+        mains: 'मेंस प्रश्न', adv: 'एडवांस प्रश्न', short: 'शॉर्ट नोट्स', full: 'फुल नोट्स', dl: 'डाउनलोड PDF',
+        solve: 'अभी हल करें 🚀', aiPlace: 'अपना JEE डाउट यहाँ लिखें...', back: 'पीछे',
+        subjects: {
+            "Physics": ["मात्रक और मापन", "शुद्धगतिकी", "गति के नियम", "कार्य और ऊर्जा", "घूर्णन गति", "गुरुत्वाकर्षण", "ऊष्मागतिकी", "स्थिरवैद्युतिकी", "धारा वैद्युत", "प्रकाशिकी", "आधुनिक भौतिकी"],
+            "Chemistry": ["परमाणु संरचना", "रासायनिक बंधन", "ऊष्मागतिकी", "साम्यावस्था", "वैद्युतरसायन", "p-ब्लॉक तत्व", "सामान्य कार्बनिक रसायन", "हाइड्रोकार्बन"],
+            "Maths": ["समुच्चय और फलन", "आव्यूह", "सारणिक", "कलन (Calculus)", "निर्देशांक ज्यामिति", "सदिश और 3D", "त्रिकोणमिति", "प्रायिकता"]
+        }
     }
+};
 
-    mainsBox.innerHTML += `
-      <div class="year-card">
-        <p style="font-size:10px; color:orange; font-weight:bold;">MAINS</p>
-        <h3>${y}</h3>
-        <a href="${mainsLink}" target="_blank" class="start-btn">${text}</a>
-      </div>`;
-
-    advBox.innerHTML += `
-      <div class="year-card">
-        <p style="font-size:10px; color:red; font-weight:bold;">ADVANCED</p>
-        <h3>${y}</h3>
-        <a href="#" class="start-btn">COMING SOON</a>
-      </div>`;
-  }
-}
-loadTests();
-
-function openPortal() { document.getElementById('testPortal').style.display = 'block'; }
-function closePortal() { document.getElementById('testPortal').style.display = 'none'; }
-
-function showType(type) {
-  if(type === 'mains') {
-    mainsBox.style.display = 'grid';
-    advBox.style.display = 'none';
-    mainsBtn.classList.add('active');
-    advBtn.classList.remove('active');
-  } else {
-    mainsBox.style.display = 'none';
-    advBox.style.display = 'grid';
-    advBtn.classList.add('active');
-    mainsBtn.classList.remove('active');
-  }
+function toggleLang() {
+    currentLang = currentLang === 'EN' ? 'HI' : 'EN';
+    document.getElementById('langBtn').innerText = currentLang === 'EN' ? 'हिन्दी 🇮🇳' : 'ENGLISH 🇺🇸';
+    updateUI();
 }
 
-document.getElementById("search").addEventListener("keyup", function(){
-  let val=this.value.toLowerCase();
-  let cards=document.querySelectorAll(".feature-card");
-  cards.forEach(card=>{
-    card.style.display = card.innerText.toLowerCase().includes(val) ? "block":"none";
-  });
-});
+function updateUI() {
+    const c = content[currentLang];
+    document.getElementById('heroTitle').innerText = c.heroTitle;
+    document.getElementById('heroSub').innerText = c.heroSub;
+    document.getElementById('dlTitle').innerText = c.dlTitle;
+    document.getElementById('txt-phy').innerText = c.phy;
+    document.getElementById('txt-chem').innerText = c.chem;
+    document.getElementById('txt-math').innerText = c.math;
+    document.getElementById('txt-lib').innerText = c.lib;
+    document.getElementById('txt-test').innerText = c.test;
+    document.getElementById('txt-ai').innerText = c.ai;
+    document.getElementById('txt-aiHead').innerText = c.ai;
+    document.getElementById('aiInput').placeholder = c.aiPlace;
+    document.getElementById('solveBtn').innerText = c.solve;
+}
+
+function openSub(subKey) {
+    document.getElementById('masterOverlay').style.display = 'block';
+    const c = content[currentLang];
+    document.getElementById('overlayTitle').innerText = c[subKey.toLowerCase().substring(0,3)];
+    let html = "";
+    c.subjects[subKey].forEach(chap => {
+        html += `<div class="item-card">
+            <h4 style="color:var(--accent);">${chap}</h4>
+            <div class="grid-btns">
+                <button class="btn-ui btn-mains" onclick="alert('${c.mains}')">${c.mains}</button>
+                <button class="btn-ui btn-adv" onclick="alert('${c.adv}')">${c.adv}</button>
+                <button class="btn-ui" onclick="alert('${c.short}')">${c.short}</button>
+                <button class="btn-ui" onclick="alert('${c.full}')">${c.full}</button>
+                <button class="btn-ui dl-btn" onclick="addDl('${chap}')">📥 ${c.dl}</button>
+            </div>
+        </div>`;
+    });
+    document.getElementById('overlayContent').innerHTML = html;
+}
+
+function openLib() {
+    document.getElementById('masterOverlay').style.display = 'block';
+    const c = content[currentLang];
+    document.getElementById('overlayTitle').innerText = c.lib;
+    document.getElementById('overlayContent').innerHTML = `<div style="padding:15px;">
+        <div class="item-card" onclick="openSub('Physics')"><h3>${c.phy} ${c.lib} 📘</h3></div>
+        <div class="item-card" onclick="openSub('Chemistry')"><h3>${c.chem} ${c.lib} 🧪</h3></div>
+        <div class="item-card" onclick="openSub('Maths')"><h3>${c.math} ${c.lib} 📗</h3></div>
+    </div>`;
+}
+
+function openTestPortal() {
+    document.getElementById('masterOverlay').style.display = 'block';
+    const c = content[currentLang];
+    document.getElementById('overlayTitle').innerText = c.test;
+    document.getElementById('overlayContent').innerHTML = `<div style="padding:20px;">
+        <button class="btn-ui" style="width:100%; padding:20px; background:#3498db; color:white; margin-bottom:12px; font-size: 14px;" onclick="loadTests('JEE Mains')">JEE MAINS (2015-2026)</button>
+        <button class="btn-ui" style="width:100%; padding:20px; background:#e74c3c; color:white; font-size: 14px;" onclick="loadTests('JEE Advanced')">JEE ADVANCED (2015-2026)</button>
+    </div>`;
+}
+
+function loadTests(type) {
+    let html = `<div style="padding:15px;"><button onclick="openTestPortal()" style="padding:6px 15px; margin-bottom:15px; border-radius:10px; border:none; background:#ddd;">← ${content[currentLang].back}</button><h2>${type}</h2>`;
+    for(let y=2026; y>=2015; y--) {
+        html += `<div class="item-card" style="display:flex; justify-content:space-between; align-items:center;">
+            <b>${type} - ${y}</b><button class="btn-ui" style="background:var(--primary); color:white; width:80px;">START</button>
+        </div>`;
+    }
+    document.getElementById('overlayContent').innerHTML = html + "</div>";
+}
+
+function addDl(chap) {
+    downloads.unshift({name: chap, time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})});
+    document.getElementById('dl-count').innerText = downloads.length;
+    document.getElementById('dlList').innerHTML = downloads.map(d => `<div style="padding:6px; border-bottom:1px dashed #ccc; display:flex; justify-content:space-between;"><span>📄 ${d.name}.pdf</span> <span style="color:green; font-weight:bold;">${d.time} ✅</span></div>`).join('');
+    alert("Added to My Downloads: " + chap);
+}
+
+function toggleTheme() { document.body.classList.toggle('dark-theme'); }
+function openAI() { document.getElementById('aiOverlay').style.display = 'block'; }
+function closeOverlay(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow="auto"; }
+
+function solveAI() {
+    const q = document.getElementById('aiInput').value;
+    if(!q) return alert("Please enter a question!");
+    const prefix = currentLang === 'HI' ? "कृपया इस JEE प्रश्न को हिंदी में विस्तार से हल करें: " : "Solve this JEE question step-by-step: ";
+    window.open("https://gemini.google.com/app?q=" + encodeURIComponent(prefix + q), '_blank');
+}
 </script>
-
 </body>
 </html>
