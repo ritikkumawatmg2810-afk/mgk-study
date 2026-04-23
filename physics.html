@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Physics Study Portal - Floral Resources</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -21,45 +22,46 @@
 
         h1 {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 15px;
             font-weight: 800;
             text-transform: uppercase;
             color: #d81b60;
-            letter-spacing: 2px;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 30px;
-            padding: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            padding: 15px;
             max-width: 1600px;
             margin: auto;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(5px);
-            border-radius: 20px;
+            border-radius: 22px;
             border: 2px solid #fce4ec;
             overflow: hidden;
             transition: 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
             position: relative;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.15);
             border-color: #f06292;
         }
 
         .card-header {
             background: linear-gradient(135deg, #f06292, #ba68c8);
-            padding: 15px;
+            padding: 18px;
             text-align: center;
             color: white;
         }
@@ -72,20 +74,20 @@
         }
 
         .card-body {
-            padding: 20px;
+            padding: 15px;
         }
 
         .section-frame {
             background: #fffafa;
             border: 1px solid #f8bbd0;
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 12px;
             margin-bottom: 15px;
         }
 
         .section-label {
             font-size: 11px;
-            font-weight: bold;
+            font-weight: 800;
             color: #ad1457;
             text-transform: uppercase;
             margin-bottom: 10px;
@@ -95,25 +97,28 @@
         .btn-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
         }
 
         .btn-grid a {
             text-decoration: none;
             color: #444;
             background: #ffffff;
-            padding: 8px;
-            border-radius: 8px;
+            padding: 12px 5px;
+            border-radius: 10px;
             font-size: 12px;
             text-align: center;
             border: 1px solid #eeeeee;
             transition: 0.2s;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .btn-grid a:hover {
+        .btn-grid a:active {
             background: #f06292;
             color: white;
-            border-color: #f06292;
         }
 
         .easy:hover { border-bottom: 3px solid #66bb6a !important; }
@@ -129,10 +134,10 @@
             flex: 1;
             background: #ffffff;
             color: #333;
-            border: 1px solid #f8bbd0;
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 12px;
+            border: 1.5px solid #f8bbd0;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
             outline: none;
         }
 
@@ -142,7 +147,13 @@
             bottom: 10px;
             right: 10px;
             font-size: 20px;
-            opacity: 0.3;
+            opacity: 0.2;
+        }
+
+        @media screen and (max-width: 480px) {
+            .container { grid-template-columns: 1fr; padding: 10px; }
+            h1 { font-size: 1.4rem; }
+            .btn-grid a { padding: 14px 5px; font-size: 13px; }
         }
     </style>
 </head>
@@ -154,34 +165,34 @@
     <div class="container" id="chapter-list"></div>
 
     <script>
-        // DATA MERGED: Yahan apne links bhariye
+        // DATA: Zero Cutting - All 26 chapters preserved with Physics Books
         const physicsData = [
-            { name: "kinematics", sn: "https://drive.google.com/file/d/1q0PaYyZz4iQnLIGgeu-jk2hYwlhu1jzs/preview", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Laws of Motion", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Work Power Energy", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Centre of Mass", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Rotational Motion", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Electrostatics & Gravitation", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Capacitors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Current Electricity", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Magnetism", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Electromagnetic Induction", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Alternating Current", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Electromagnetic Waves", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Ray Optics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Wave Optics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Semiconductors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Units & Dimensions", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Errors & Measurements", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Modern Physics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Vectors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Fluid Mechanics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Elasticity", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Simple Harmonic Motion", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "KTG & Thermodynamics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Heat Transfer", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Thermal Expansion", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Calorimetry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" }
+            { name: "kinematics", sn: "https://drive.google.com/file/d/1q0PaYyZz4iQnLIGgeu-jk2hYwlhu1jzs/preview", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Laws of Motion", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Work Power Energy", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Centre of Mass", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Rotational Motion", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Electrostatics & Gravitation", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Capacitors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Current Electricity", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Magnetism", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Electromagnetic Induction", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Alternating Current", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Electromagnetic Waves", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Ray Optics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Wave Optics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Semiconductors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Units & Dimensions", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Errors & Measurements", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Modern Physics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Vectors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Fluid Mechanics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Elasticity", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Simple Harmonic Motion", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "KTG & Thermodynamics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Heat Transfer", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Thermal Expansion", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" },
+            { name: "Calorimetry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hcv: "#", iro: "#", dcp: "#", cng: "#" }
         ];
 
         const container = document.getElementById('chapter-list');
@@ -199,27 +210,27 @@
                     <div class="section-frame">
                         <span class="section-label">📚 Lectures & Notes</span>
                         <div class="btn-grid">
-                            <a href="${ch.sn}">Short Notes</a>
-                            <a href="${ch.fn}">Full Notes</a>
-                            <a href="${ch.mm}">Mind Maps</a>
-                            <a href="${ch.ft}">Finger Tips</a>
+                            <a href="${ch.sn}" target="_blank">Short Notes</a>
+                            <a href="${ch.fn}" target="_blank">Full Notes</a>
+                            <a href="${ch.mm}" target="_blank">Mind Maps</a>
+                            <a href="${ch.ft}" target="_blank">Finger Tips</a>
                         </div>
                     </div>
                     <div class="section-frame">
                         <span class="section-label">✍️ Practice (Level Wise)</span>
                         <div class="btn-grid">
-                            <a href="${ch.e}" class="easy">Easy Level</a>
-                            <a href="${ch.m}" class="medium">Medium Level</a>
-                            <a href="${ch.t}" class="tough">Tough Level</a>
+                            <a href="${ch.e}" class="easy" target="_blank">Easy Level</a>
+                            <a href="${ch.m}" class="medium" target="_blank">Medium Level</a>
+                            <a href="${ch.t}" class="tough" target="_blank">Tough Level</a>
                         </div>
                     </div>
                     <div class="section-frame">
-                        <span class="section-label">📖 Books & Solutions</span>
+                        <span class="section-label">📖 Best Physics Books</span>
                         <div class="btn-grid">
-                            <a href="${ch.hn}">HCV Notes</a>
-                            <a href="${ch.hq}">HCV Questions</a>
-                            <a href="${ch.in}">Irodov Notes</a>
-                            <a href="${ch.iq}">Irodov Questions</a>
+                            <a href="${ch.hcv}" target="_blank">HC Verma</a>
+                            <a href="${ch.iro}" target="_blank">Irodov</a>
+                            <a href="${ch.dcp}" target="_blank">DC Pandey</a>
+                            <a href="${ch.cng}" target="_blank">Cengage</a>
                         </div>
                     </div>
                     <div class="section-frame">
