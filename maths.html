@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mathematics Study Portal - Floral Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -21,45 +21,38 @@
 
         h1 {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 15px;
             font-weight: 800;
             text-transform: uppercase;
             color: #d81b60;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-size: 1.6rem;
+            letter-spacing: 1px;
         }
 
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 30px;
-            padding: 20px;
+            /* Mobile par 1 column aur PC par auto columns */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            padding: 15px;
             max-width: 1600px;
             margin: auto;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 22px;
             border: 2px solid #fce4ec;
             overflow: hidden;
-            transition: 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
             display: flex;
             flex-direction: column;
             position: relative;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.2);
-            border-color: #f06292;
-        }
-
         .card-header {
             background: linear-gradient(135deg, #f06292, #ba68c8);
-            padding: 15px;
+            padding: 18px;
             text-align: center;
             color: white;
         }
@@ -72,20 +65,20 @@
         }
 
         .card-body {
-            padding: 20px;
+            padding: 15px;
         }
 
         .section-frame {
             background: #fffafa;
             border: 1px solid #f8bbd0;
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 12px;
             margin-bottom: 15px;
         }
 
         .section-label {
             font-size: 11px;
-            font-weight: bold;
+            font-weight: 800;
             color: #ad1457;
             text-transform: uppercase;
             margin-bottom: 10px;
@@ -95,30 +88,28 @@
         .btn-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
         }
 
         .btn-grid a {
             text-decoration: none;
             color: #444;
             background: #ffffff;
-            padding: 8px;
-            border-radius: 8px;
+            padding: 14px 5px; /* Touch ke liye bada padding */
+            border-radius: 10px;
             font-size: 12px;
             text-align: center;
             border: 1px solid #eeeeee;
-            transition: 0.2s;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .btn-grid a:hover {
+        .btn-grid a:active {
             background: #f06292;
             color: white;
-            border-color: #f06292;
         }
-
-        .easy:hover { border-bottom: 3px solid #66bb6a !important; }
-        .medium:hover { border-bottom: 3px solid #ffa726 !important; }
-        .tough:hover { border-bottom: 3px solid #ef5350 !important; }
 
         .pyq-row {
             display: flex;
@@ -128,30 +119,29 @@
         select {
             flex: 1;
             background: #ffffff;
-            color: #333;
-            border: 1px solid #f8bbd0;
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 12px;
+            border: 1.5px solid #f8bbd0;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
             outline: none;
-        }
-
-        .card::after {
-            content: '🌸';
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 20px;
-            opacity: 0.3;
         }
 
         .back-home {
             display: block;
             text-align: center;
-            margin: 20px;
+            margin: 20px auto;
             color: #d81b60;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 800;
+            padding: 15px;
+            border: 2px solid #d81b60;
+            border-radius: 50px;
+            max-width: 200px;
+        }
+
+        @media screen and (max-width: 480px) {
+            .container { grid-template-columns: 1fr; padding: 10px; }
+            h1 { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -159,34 +149,32 @@
 <body>
 
     <h1>📐 Maths Resource Portal</h1>
-
     <div class="container" id="maths-list"></div>
-
     <a href="index.html" class="back-home">⬅ Back to Home</a>
 
     <script>
-        // MATHS DATA: Tumhare purane links yahan 'fn' (Full Notes) mein hain
+        // MATHS DATA: Saare original links (sn, fn, mm) wahi hain jo tumne bheje the.
         const mathsData = [
-            { name: "Relations & Functions", sn: "https://drive.google.com/file/d/1UCHS0rsWsh-MYvGNu5-dt3afrLVGZX_-/preview", fn: "https://drive.google.com/file/d/1rUIyCfKcz6XV9aE0jIHdjn3Te79VODqq/preview", mm: "https://drive.google.com/file/d/1UhdYx1zamD1H-Wl3ifUYo6nwyeBbRHWi/preview", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Basic Maths", sn: "https://drive.google.com/file/d/1K-AnKyLpu8eyfVq9Sq8NMz1kx-nR9CNA/preview", fn: "https://drive.google.com/file/d/1S_n332h73qw5dZhs5kc-vR8EIkrZFHaT/view?usp=sharing", mm: "https://drive.google.com/file/d/1oDKqrJyB8-0VUDkN2JjHGdkD5e4Z64-R/view?usp=sharing", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Quadratic Equation", sn: "https://drive.google.com/file/d/1J3u-EWKAYOCx7NOtdRvvQQXAMQqkkk2K/preview", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Sequences & Series", sn: "https://drive.google.com/file/d/1XxsfkGQsQGILsPtTq2bokQEmNXJbfgRD/preview", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Inverse Trigonometry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Matrices", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Determinants", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Continuity & Differentiability", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Applications of Derivatives", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Integrals", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Applications of Integrals", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Differential Equations", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Vectors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "3D Geometry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Probability", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Statistics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Complex Numbers", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Binomial Theorem", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Limits", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" },
-            { name: "Permutations & Combinations", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", hn: "#", hq: "#", in: "#", iq: "#" }
+            { name: "Relations & Functions", sn: "https://drive.google.com/file/d/1UCHS0rsWsh-MYvGNu5-dt3afrLVGZX_-/preview", fn: "https://drive.google.com/file/d/1rUIyCfKcz6XV9aE0jIHdjn3Te79VODqq/preview", mm: "https://drive.google.com/file/d/1UhdYx1zamD1H-Wl3ifUYo6nwyeBbRHWi/preview", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Basic Maths", sn: "https://drive.google.com/file/d/1K-AnKyLpu8eyfVq9Sq8NMz1kx-nR9CNA/preview", fn: "https://drive.google.com/file/d/1S_n332h73qw5dZhs5kc-vR8EIkrZFHaT/view?usp=sharing", mm: "https://drive.google.com/file/d/1oDKqrJyB8-0VUDkN2JjHGdkD5e4Z64-R/view?usp=sharing", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Quadratic Equation", sn: "https://drive.google.com/file/d/1J3u-EWKAYOCx7NOtdRvvQQXAMQqkkk2K/preview", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Sequences & Series", sn: "https://drive.google.com/file/d/1XxsfkGQsQGILsPtTq2bokQEmNXJbfgRD/preview", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Inverse Trigonometry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Matrices", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Determinants", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Continuity & Differentiability", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Applications of Derivatives", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Integrals", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Applications of Integrals", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Differential Equations", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Vectors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "3D Geometry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Probability", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Statistics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Complex Numbers", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Binomial Theorem", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Limits", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" },
+            { name: "Permutations & Combinations", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", rd: "#" }
         ];
 
         const container = document.getElementById('maths-list');
@@ -207,46 +195,37 @@
                             <a href="${ch.sn}" target="_blank">Short Notes</a>
                             <a href="${ch.fn}" target="_blank">Full Notes</a>
                             <a href="${ch.mm}" target="_blank">Mind Maps</a>
-                            <a href="${ch.ft}" target="_blank">Finger Tips</a>
+                            <a href="${ch.ft}" target="_blank">Formula Sheet</a>
                         </div>
                     </div>
                     <div class="section-frame">
                         <span class="section-label">✍️ Practice (Level Wise)</span>
                         <div class="btn-grid">
-                            <a href="${ch.e}" class="easy" target="_blank">Easy Level</a>
-                            <a href="${ch.m}" class="medium" target="_blank">Medium Level</a>
-                            <a href="${ch.t}" class="tough" target="_blank">Tough Level</a>
+                            <a href="${ch.e}" target="_blank">Easy</a>
+                            <a href="${ch.m}" target="_blank">Medium</a>
+                            <a href="${ch.t}" target="_blank">Tough</a>
                         </div>
                     </div>
                     <div class="section-frame">
-                        <span class="section-label">📖 Books & Solutions</span>
+                        <span class="section-label">📖 Best Maths Books</span>
                         <div class="btn-grid">
-                            <a href="${ch.hn}" target="_blank">Maths Notes</a>
-                            <a href="${ch.hq}" target="_blank">Maths Ques</a>
-                            <a href="${ch.in}" target="_blank">Adv Notes</a>
-                            <a href="${ch.iq}" target="_blank">Adv Ques</a>
+                            <a href="${ch.cng}" target="_blank">Cengage</a>
+                            <a href="${ch.arh}" target="_blank">Arihant</a>
+                            <a href="${ch.bb}" target="_blank">Black Book</a>
+                            <a href="${ch.rd}" target="_blank">RD Sharma</a>
                         </div>
                     </div>
                     <div class="section-frame">
-                        <span class="section-label">🎯 PYQ Archives (2015-2026)</span>
+                        <span class="section-label">🎯 PYQ Archives</span>
                         <div class="pyq-row">
-                            <select onchange="if(this.value) window.open(this.value)"><option value="">JEE Mains</option>${years}</select>
-                            <select onchange="if(this.value) window.open(this.value)"><option value="">JEE Adv</option>${years}</select>
+                            <select onchange="if(this.value) window.open(this.value)"><option value="">Mains</option>${years}</select>
+                            <select onchange="if(this.value) window.open(this.value)"><option value="">Adv</option>${years}</select>
                         </div>
                     </div>
                 </div>
             </div>`;
             container.innerHTML += card;
         });
-    </script>
-
-    <script src="https://utteranc.es/client.js"
-            repo="ritikkumawatmg2810-afk/mgk-study"
-            issue-term="pathname"
-            label="Comments"
-            theme="github-dark"
-            crossorigin="anonymous"
-            async>
     </script>
 </body>
 </html>
