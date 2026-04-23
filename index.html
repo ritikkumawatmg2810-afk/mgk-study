@@ -32,6 +32,56 @@ nav a {
   font-weight: bold;
 }
 
+/* --- NEW: CHANGE TARGET BUTTON STYLE --- */
+.target-btn {
+  background: #ff6600;
+  color: white !important;
+  padding: 6px 15px;
+  border-radius: 50px;
+  border: 2px solid white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* --- NEW: MATRIX OVERLAY STYLE --- */
+#targetOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.98);
+  z-index: 2000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.matrix-item {
+  background: #fff;
+  border: 2px solid #003366;
+  padding: 20px 10px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 800;
+  cursor: pointer;
+  color: #003366;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.matrix-item:hover {
+  background: #003366;
+  color: white;
+  transform: scale(1.05);
+}
+
 /* HERO */
 .hero {
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
@@ -209,14 +259,8 @@ footer { background:#222; color:white; text-align:center; padding:20px; }
     margin: 10px auto;
   }
 
-  .tab-btn {
-    padding: 10px 15px;
-    font-size: 13px;
-  }
-
-  .test-grid {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-    gap: 10px;
+  .matrix-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>
@@ -227,11 +271,28 @@ footer { background:#222; color:white; text-align:center; padding:20px; }
 <header>
   <h2>MGK JEE Study Hub</h2>
   <nav>
+    <a class="target-btn" onclick="toggleOverlay()">🎯 Change Target</a>
     <a href="#">Home</a>
     <a href="#" onclick="openPortal()">Mock Test</a>
     <a href="leaderboard.html">Leaderboard</a>
   </nav>
 </header>
+
+<div id="targetOverlay">
+    <h2 style="color:#003366; margin-bottom:20px;">SELECT YOUR CLASS</h2>
+    <div class="matrix-grid">
+        <div class="matrix-item" onclick="selectClass('5th')">Class 5</div>
+        <div class="matrix-item" onclick="selectClass('6th')">Class 6</div>
+        <div class="matrix-item" onclick="selectClass('7th')">Class 7</div>
+        <div class="matrix-item" onclick="selectClass('8th')">Class 8</div>
+        <div class="matrix-item" onclick="selectClass('9th')">Class 9</div>
+        <div class="matrix-item" onclick="selectClass('10th')">Class 10</div>
+        <div class="matrix-item" onclick="selectClass('11th')">Class 11</div>
+        <div class="matrix-item" onclick="selectClass('12th')">Class 12</div>
+        <div class="matrix-item" onclick="selectClass('Olympiad')" style="grid-column: span 3; background:#fffde7;">🏆 Olympiad & Foundation</div>
+    </div>
+    <button onclick="toggleOverlay()" style="margin-top:20px; border:none; background:none; color:#666; cursor:pointer; font-weight:bold;">✖ CLOSE</button>
+</div>
 
 <section class="hero">
   <h1>Free JEE Notes & Mock Tests | Physics Chemistry Maths</h1>
@@ -347,13 +408,13 @@ function showType(type) {
   if(type === 'mains') {
     mainsBox.style.display = 'grid';
     advBox.style.display = 'none';
-    mainsBtn.classList.add('active');
-    advBtn.classList.remove('active');
+    document.getElementById('mainsBtn').classList.add('active');
+    document.getElementById('advBtn').classList.remove('active');
   } else {
     mainsBox.style.display = 'none';
     advBox.style.display = 'grid';
-    advBtn.classList.add('active');
-    mainsBtn.classList.remove('active');
+    document.getElementById('advBtn').classList.add('active');
+    document.getElementById('mainsBtn').classList.remove('active');
   }
 }
 
@@ -364,7 +425,26 @@ document.getElementById("search").addEventListener("keyup", function(){
     card.style.display = card.innerText.toLowerCase().includes(val) ? "block":"none";
   });
 });
+
+/* --- NEW: TARGET REDIRECT LOGIC --- */
+function toggleOverlay() {
+    const overlay = document.getElementById('targetOverlay');
+    overlay.style.display = (overlay.style.display === 'flex') ? 'none' : 'flex';
+}
+
+function selectClass(className) {
+    toggleOverlay();
+    if(className === '5th') { window.location.href = "class5.html"; }
+    else if(className === '6th') { window.location.href = "class6.html"; }
+    else if(className === '7th') { window.location.href = "class7.html"; }
+    else if(className === '8th') { window.location.href = "class8.html"; }
+    else if(className === '9th') { window.location.href = "class9.html"; }
+    else if(className === '10th') { window.location.href = "class10.html"; }
+    else if(className === '11th') { window.location.href = "class11.html"; }
+    else if(className === '12th') { window.location.href = "class12.html"; }
+    else if(className === 'Olympiad') { window.location.href = "olympiad.html"; }
+}
 </script>
 
 </body>
-  </html>
+</html>
