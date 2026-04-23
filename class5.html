@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Portal - MGK Study Hub</title>
+    <title>Class 5 Portal - MGK Study Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; font-family: 'Inter', sans-serif; background: #fff5f8 url('https://www.transparenttextures.com/patterns/floral-paper.png'); color: #333; }
         header { background: #d81b60; color: white; padding: 25px; text-align: center; font-weight: 800; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .section-card { background: white; border-radius: 20px; border: 2px solid #fce4ec; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .section-card { background: white; border-radius: 20px; border: 2px solid #fce4ec; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .section-card:hover { transform: translateY(-5px); border-color: #f06292; }
         .section-card h3 { color: #d81b60; margin-top: 0; border-bottom: 2px solid #fce4ec; padding-bottom: 10px; font-size: 18px; text-transform: uppercase; }
         .link-list { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
         .res-link { text-decoration: none; color: #444; background: #fffafa; padding: 12px; border-radius: 10px; border: 1px solid #f8bbd0; font-weight: 600; font-size: 14px; transition: 0.2s; text-align: center; }
@@ -20,7 +21,9 @@
 </head>
 <body>
 
-    <header><h1 id="pageTitle">Class Resources</h1></header>
+    <header>
+        <h1>Class 5 Resource Portal 🎒</h1>
+    </header>
 
     <div class="nav-btns">
         <a href="index.html" class="back-home">🏠 Back to Home</a>
@@ -30,42 +33,43 @@
         </div>
 
 <script>
-    // 📝 YAHAN APNE LINKS DALO (EASY EDITOR)
+    // 📝 SUBJECT-WISE CONTENT DATA
     const resourceData = [
         {
-            category: "📚 Study Material",
-            links: [
-                { title: "Short Notes PDF", url: "APNA_LINK_HERE" },
-                { title: "Full Chapter Notes", url: "#" },
-                { title: "Formula Sheet", url: "#" }
-            ]
+          category: "🔢 Mathematics (Ganit)",
+          links: [
+            { title: "NCERT Math-Magic Book PDF", url: "https://ncert.nic.in/textbook.php?emmh1=0-14" },
+            { title: "Maths Chapter-wise Notes", url: "#" },
+            { title: "Tables (1-20) Chart", url: "#" }
+          ]
         },
         {
-            category: "📖 Library (PYQ & Test)",
-            links: [
-                { title: "Last 15 Year Papers", url: "#" },
-                { title: "Weekly Mock Test", url: "#" },
-                { title: "Most Important Ques", url: "#" }
-            ]
+          category: "🌿 EVS (Environmental Studies)",
+          links: [
+            { title: "Looking Around (NCERT Book)", url: "https://ncert.nic.in/textbook.php?eeap1=0-22" },
+            { title: "EVS Short Revision Notes", url: "#" },
+            { title: "Science Activity Book", url: "#" }
+          ]
         },
         {
-            category: "🔔 School Updates",
-            links: [
-                { title: "Board Date Sheet 2026", url: "#" },
-                { title: "Syllabus Copy", url: "#" }
-            ]
+          category: "📖 Language (English & Hindi)",
+          links: [
+            { title: "English: Marigold Book PDF", url: "https://ncert.nic.in/textbook.php?eeen1=0-10" },
+            { title: "Hindi: Rimjhim Book PDF", url: "https://ncert.nic.in/textbook.php?ehap1=0-18" },
+            { title: "Basic Grammar Guide", url: "#" }
+          ]
         },
         {
-            category: "🏫 School Section (Books)",
-            links: [
-                { title: "NCERT Books PDF", url: "#" },
-                { title: "CBSE Exemplar", url: "#" },
-                { title: "State Board Solutions", url: "#" }
-            ]
+          category: "📝 Exam & Practice",
+          links: [
+            { title: "Sample Question Papers", url: "#" },
+            { title: "Previous Year Papers", url: "#" },
+            { title: "Weekly Revision Quiz", url: "#" }
+          ]
         }
     ];
 
-    // Rendering Logic (Ise touch na karein)
+    // Rendering Logic
     const container = document.getElementById('contentContainer');
     resourceData.forEach(section => {
         let linksHTML = section.links.map(l => `<a href="${l.url}" class="res-link" target="_blank">${l.title}</a>`).join('');
@@ -76,5 +80,6 @@
             </div>`;
     });
 </script>
+
 </body>
 </html>
