@@ -3,149 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mathematics Study Portal - Floral Edition</title>
+    <title>Maths Resource Portal - Final Version</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
     <style>
-        body {
-            margin: 0;
-            font-family: 'Inter', Arial, sans-serif;
-            background-color: #ffffff;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.2) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(173, 216, 230, 0.2) 0%, transparent 20%),
-                url('https://www.transparenttextures.com/patterns/floral-paper.png');
-            color: #333;
-            min-height: 100vh;
-        }
-
-        h1 {
-            text-align: center;
-            padding: 30px 15px;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #d81b60;
-            font-size: 1.6rem;
-            letter-spacing: 1px;
-        }
-
-        .container {
-            display: grid;
-            /* Mobile par 1 column aur PC par auto columns */
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            padding: 15px;
-            max-width: 1600px;
-            margin: auto;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 22px;
-            border: 2px solid #fce4ec;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, #f06292, #ba68c8);
-            padding: 18px;
-            text-align: center;
-            color: white;
-        }
-
-        .ch-name {
-            font-size: 18px;
-            font-weight: 800;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .card-body {
-            padding: 15px;
-        }
-
-        .section-frame {
-            background: #fffafa;
-            border: 1px solid #f8bbd0;
-            border-radius: 14px;
-            padding: 12px;
-            margin-bottom: 15px;
-        }
-
-        .section-label {
-            font-size: 11px;
-            font-weight: 800;
-            color: #ad1457;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .btn-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .btn-grid a {
-            text-decoration: none;
-            color: #444;
-            background: #ffffff;
-            padding: 14px 5px; /* Touch ke liye bada padding */
-            border-radius: 10px;
-            font-size: 12px;
-            text-align: center;
-            border: 1px solid #eeeeee;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-grid a:active {
-            background: #f06292;
-            color: white;
-        }
-
-        .pyq-row {
-            display: flex;
-            gap: 10px;
-        }
-
-        select {
-            flex: 1;
-            background: #ffffff;
-            border: 1.5px solid #f8bbd0;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .back-home {
-            display: block;
-            text-align: center;
-            margin: 20px auto;
-            color: #d81b60;
-            text-decoration: none;
-            font-weight: 800;
-            padding: 15px;
-            border: 2px solid #d81b60;
-            border-radius: 50px;
-            max-width: 200px;
-        }
-
-        @media screen and (max-width: 480px) {
-            .container { grid-template-columns: 1fr; padding: 10px; }
-            h1 { font-size: 1.4rem; }
-        }
+        body { margin: 0; font-family: 'Inter', Arial, sans-serif; background-color: #ffffff; background-image: radial-gradient(circle at 10% 20%, rgba(255, 182, 193, 0.2) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgba(173, 216, 230, 0.2) 0%, transparent 20%), url('https://www.transparenttextures.com/patterns/floral-paper.png'); color: #333; min-height: 100vh; }
+        h1 { text-align: center; padding: 30px 15px; font-weight: 800; text-transform: uppercase; color: #d81b60; font-size: 1.6rem; letter-spacing: 1px; }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; padding: 15px; max-width: 1600px; margin: auto; }
+        .card { background: rgba(255, 255, 255, 0.98); border-radius: 22px; border: 2px solid #fce4ec; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+        .card-header { background: linear-gradient(135deg, #f06292, #ba68c8); padding: 18px; text-align: center; color: white; }
+        .ch-name { font-size: 18px; font-weight: 800; margin: 0; text-transform: uppercase; }
+        .card-body { padding: 15px; }
+        .section-frame { background: #fffafa; border: 1px solid #f8bbd0; border-radius: 14px; padding: 12px; margin-bottom: 15px; }
+        .section-label { font-size: 11px; font-weight: 800; color: #ad1457; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .btn-grid a { text-decoration: none; color: #444; background: #ffffff; padding: 14px 5px; border-radius: 10px; font-size: 12px; text-align: center; border: 1px solid #eeeeee; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+        .lec-stack { display: flex; flex-direction: column; gap: 8px; }
+        .lec-item { display: flex; gap: 5px; align-items: center; }
+        .lec-item a { flex: 1; text-decoration: none; color: #444; background: #ffffff; padding: 10px; border-radius: 8px; font-size: 11px; border: 1px solid #eee; font-weight: 600; text-align: center; }
+        .lec-item a.pdf-btn { background: #fff0f5; color: #d81b60; border-color: #f8bbd0; }
+        .pyq-row { display: flex; gap: 10px; }
+        select { flex: 1; background: #ffffff; border: 1.5px solid #f8bbd0; padding: 12px; border-radius: 10px; font-size: 14px; outline: none; }
+        .back-home { display: block; text-align: center; margin: 20px auto; color: #d81b60; text-decoration: none; font-weight: 800; padding: 15px; border: 2px solid #d81b60; border-radius: 50px; max-width: 200px; }
     </style>
 </head>
-
 <body>
 
     <h1>📐 Maths Resource Portal</h1>
@@ -153,78 +33,47 @@
     <a href="index.html" class="back-home">⬅ Back to Home</a>
 
     <script>
-        // MATHS DATA: Saare original links (sn, fn, mm) wahi hain jo tumne bheje the.
         const mathsData = [
-            { name: "Relations & Functions", sn: "https://drive.google.com/file/d/1UCHS0rsWsh-MYvGNu5-dt3afrLVGZX_-/preview", fn: "https://drive.google.com/file/d/1rUIyCfKcz6XV9aE0jIHdjn3Te79VODqq/preview", mm: "https://drive.google.com/file/d/1UhdYx1zamD1H-Wl3ifUYo6nwyeBbRHWi/preview", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Basic Maths", sn: "https://drive.google.com/file/d/1K-AnKyLpu8eyfVq9Sq8NMz1kx-nR9CNA/preview", fn: "https://drive.google.com/file/d/1S_n332h73qw5dZhs5kc-vR8EIkrZFHaT/view?usp=sharing", mm: "https://drive.google.com/file/d/1oDKqrJyB8-0VUDkN2JjHGdkD5e4Z64-R/view?usp=sharing", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Quadratic Equation", sn: "https://drive.google.com/file/d/1J3u-EWKAYOCx7NOtdRvvQQXAMQqkkk2K/preview", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Sequences & Series", sn: "https://drive.google.com/file/d/1XxsfkGQsQGILsPtTq2bokQEmNXJbfgRD/preview", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Inverse Trigonometry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Matrices", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Determinants", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Continuity & Differentiability", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Applications of Derivatives", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Integrals", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Applications of Integrals", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Differential Equations", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Vectors", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "3D Geometry", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Probability", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Statistics", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Complex Numbers", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Binomial Theorem", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Limits", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" },
-            { name: "Permutations & Combinations", sn: "#", fn: "#", mm: "#", ft: "#", e: "#", m: "#", t: "#", cng: "#", arh: "#", bb: "#", aasn: "#" }
+            { name: "Relations & Functions", sn: "https://drive.google.com/file/d/1UCHS0rsWsh-MYvGNu5-dt3afrLVGZX_-/preview", fn: "https://drive.google.com/file/d/1rUIyCfKcz6XV9aE0jIHdjn3Te79VODqq/preview", mm: "https://drive.google.com/file/d/1UhdYx1zamD1H-Wl3ifUYo6nwyeBbRHWi/preview", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Basic Maths", sn: "https://drive.google.com/file/d/1K-AnKyLpu8eyfVq9Sq8NMz1kx-nR9CNA/preview", fn: "https://drive.google.com/file/d/1S_n332h73qw5dZhs5kc-vR8EIkrZFHaT/view?usp=sharing", mm: "https://drive.google.com/file/d/1oDKqrJyB8-0VUDkN2JjHGdkD5e4Z64-R/view?usp=sharing", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Quadratic Equation", sn: "https://drive.google.com/file/d/1J3u-EWKAYOCx7NOtdRvvQQXAMQqkkk2K/preview", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Sequences & Series", sn: "https://drive.google.com/file/d/1XxsfkGQsQGILsPtTq2bokQEmNXJbfgRD/preview", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Inverse Trigonometry", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Matrices", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Determinants", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Continuity & Differentiability", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Applications of Derivatives", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Integrals", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Applications of Integrals", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Differential Equations", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Vectors", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "3D Geometry", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Probability", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Statistics", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Complex Numbers", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Binomial Theorem", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Limits", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] },
+            { name: "Permutations & Combinations", sn: "#", fn: "#", mm: "#", ft: "#", cng: "#", arh: "#", bb: "#", pdfs: ["#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#","#"] }
         ];
 
         const container = document.getElementById('maths-list');
-
         mathsData.forEach(ch => {
             let years = "";
-            for (let y = 2026; y >= 2015; y--) {
-                years += `<option value="paper-${ch.name}-${y}.html">${y} Paper</option>`;
+            for (let y = 2026; y >= 2015; y--) { years += `<option value="paper-${ch.name}-${y}.html">${y} Paper</option>`; }
+            let pdfList = "";
+            for (let i = 1; i <= 26; i++) {
+                pdfList += `<div class="lec-item"><a href="${ch.pdfs[i-1]}" class="pdf-btn" target="_blank">📄 PDF Unit ${i}</a></div>`;
             }
-
-            const card = `
+            container.innerHTML += `
             <div class="card">
                 <div class="card-header"><h2 class="ch-name">${ch.name}</h2></div>
                 <div class="card-body">
-                    <div class="section-frame">
-                        <span class="section-label">📚 Lectures & Notes</span>
-                        <div class="btn-grid">
-                            <a href="${ch.sn}" target="_blank">Short Notes</a>
-                            <a href="${ch.fn}" target="_blank">Full Notes</a>
-                            <a href="${ch.mm}" target="_blank">Mind Maps</a>
-                            <a href="${ch.ft}" target="_blank">Formula Sheet</a>
-                        </div>
-                    </div>
-                    <div class="section-frame">
-                        <span class="section-label">✍️ Practice (Level Wise)</span>
-                        <div class="btn-grid">
-                            <a href="${ch.e}" target="_blank">Easy</a>
-                            <a href="${ch.m}" target="_blank">Medium</a>
-                            <a href="${ch.t}" target="_blank">Tough</a>
-                        </div>
-                    </div>
-                    <div class="section-frame">
-                        <span class="section-label">📖 Best Maths Books</span>
-                        <div class="btn-grid">
-                            <a href="${ch.cng}" target="_blank">Cengage</a>
-                            <a href="${ch.arh}" target="_blank">Arihant</a>
-                            <a href="${ch.bb}" target="_blank">Black Book</a>
-                            <a href="${ch.aasn}" target="_blank">ashish agarwal sir notes</a>
-                        </div>
-                    </div>
-                    <div class="section-frame">
-                        <span class="section-label">🎯 PYQ Archives</span>
-                        <div class="pyq-row">
-                            <select onchange="if(this.value) window.open(this.value)"><option value="">Mains</option>${years}</select>
-                            <select onchange="if(this.value) window.open(this.value)"><option value="">Adv</option>${years}</select>
-                        </div>
-                    </div>
+                    <div class="section-frame"><span class="section-label">📚 Resources</span><div class="btn-grid"><a href="${ch.sn}" target="_blank">Short Notes</a><a href="${ch.fn}" target="_blank">Full Notes</a><a href="${ch.mm}" target="_blank">Mind Maps</a><a href="${ch.ft}" target="_blank">Formulae</a></div></div>
+                    <div class="section-frame"><span class="section-label">👨‍🏫 Ashish Sir PDFs</span><div class="lec-stack" style="max-height: 250px; overflow-y: auto; padding-right:5px;">${pdfList}</div></div>
+                    <div class="section-frame"><span class="section-label">📖 Best Books</span><div class="btn-grid"><a href="${ch.cng}" target="_blank">Cengage</a><a href="${ch.arh}" target="_blank">Arihant</a><a href="${ch.bb}" target="_blank">Black Book</a></div></div>
+                    <div class="section-frame"><span class="section-label">🎯 PYQ Archives</span><div class="pyq-row"><select onchange="if(this.value) window.open(this.value)"><option value="">Mains</option>${years}</select><select onchange="if(this.value) window.open(this.value)"><option value="">Adv</option>${years}</select></div></div>
                 </div>
             </div>`;
-            container.innerHTML += card;
         });
     </script>
 </body>
