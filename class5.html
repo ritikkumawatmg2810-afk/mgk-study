@@ -24,6 +24,11 @@
             backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 15px; text-align: center;
         }
 
+        /* Medium Switcher Style */
+        .med-toggle { display: flex; justify-content: center; gap: 5px; margin-bottom: 15px; background: rgba(255,255,255,0.05); width: fit-content; margin: 0 auto 15px; padding: 5px; border-radius: 50px; border: 1px solid var(--border); }
+        .med-btn { padding: 6px 15px; border-radius: 50px; border: none; background: transparent; color: #94a3b8; font-weight: 800; cursor: pointer; transition: 0.3s; font-size: 11px; }
+        .med-btn.active { background: var(--primary); color: white; }
+
         .logo { font-size: 1.8rem; font-weight: 900; background: linear-gradient(to right, #fff, var(--primary), var(--neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; letter-spacing: -1px; }
 
         .search-box { width: 90%; max-width: 500px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 12px 20px; border-radius: 50px; color: #fff; outline: none; margin-bottom: 15px; }
@@ -59,92 +64,117 @@
 <body>
 
     <header>
+        <div class="med-toggle">
+            <button class="med-btn active" id="enBtn" onclick="toggleMed('en')">English</button>
+            <button class="med-btn" id="hiBtn" onclick="toggleMed('hi')">हिंदी</button>
+        </div>
+
         <div class="logo">MGK CLASS 5 HUB</div>
         <input type="text" class="search-box" id="search" placeholder="Search Chapter Name..." onkeyup="filter()">
-        <div class="sub-nav">
-            <button class="btn-sub active" onclick="switchS('Maths', this)">Maths</button>
-            <button class="btn-sub" onclick="switchS('EVS', this)">EVS</button>
-            <button class="btn-sub" onclick="switchS('English', this)">English</button>
-            <button class="btn-sub" onclick="switchS('Hindi', this)">Hindi</button>
-        </div>
+        <div class="sub-nav" id="subTabs">
+            </div>
     </header>
 
     <div class="portal-grid" id="mainGrid"></div>
 
     <script>
-        /* =========================================================
-           MASTER CONTENT DATABASE 
-           [ "Chapter Name", ["Basic Link", "Medium Link", "Adv Link"] ]
-           =========================================================
-        */
+        let currentMedium = 'en';
+        let activeSubject = 'Maths';
+
+        const UI_TEXT = {
+            en: { search: "Search Chapter Name...", subjects: ["Maths", "EVS", "English", "Hindi"] },
+            hi: { search: "पाठ का नाम खोजें...", subjects: ["गणित", "पर्यावरण", "अंग्रेजी", "हिंदी"] }
+        };
+
         const DB = {
             "Maths": [
-                ["The Fish Tale", ["#", "#", "#"]],
-                ["Shapes and Angles", ["#", "#", "#"]],
-                ["How Many Squares?", ["#", "#", "#"]],
-                ["Parts and Wholes", ["#", "#", "#"]],
-                ["Does it Look Same?", ["#", "#", "#"]],
-                ["Be My Multiple", ["#", "#", "#"]],
-                ["Can You See Pattern?", ["#", "#", "#"]],
-                ["Mapping Your Way", ["#", "#", "#"]],
-                ["Boxes and Sketches", ["#", "#", "#"]],
-                ["Tenths and Hundredths", ["#", "#", "#"]],
-                ["Area and Boundary", ["#", "#", "#"]],
-                ["Smart Charts", ["#", "#", "#"]],
-                ["Ways to Multiply", ["#", "#", "#"]],
-                ["How Big? How Heavy?", ["#", "#", "#"]]
+                { en: "The Fish Tale", hi: "मछली उछली", links: ["#", "#", "#"] },
+                { en: "Shapes and Angles", hi: "आकृतियाँ और कोण", links: ["#", "#", "#"] },
+                { en: "How Many Squares?", hi: "कितने वर्ग?", links: ["#", "#", "#"] },
+                { en: "Parts and Wholes", hi: "हिस्से और पूरे", links: ["#", "#", "#"] },
+                { en: "Does it Look Same?", hi: "क्या यह एक जैसा दिखता है?", links: ["#", "#", "#"] },
+                { en: "Be My Multiple", hi: "मैं तेरा गुणनखंड, तू मेरा गुणज", links: ["#", "#", "#"] },
+                { en: "Can You See Pattern?", hi: "क्या तुम पैटर्न देख सकते हो?", links: ["#", "#", "#"] },
+                { en: "Mapping Your Way", hi: "नक्शा", links: ["#", "#", "#"] },
+                { en: "Boxes and Sketches", hi: "डिब्बे और स्केच", links: ["#", "#", "#"] },
+                { en: "Tenths and Hundredths", hi: "दसवाँ और सौवाँ भाग", links: ["#", "#", "#"] },
+                { en: "Area and Boundary", ["hi"]: "क्षेत्रफल और घेरा", links: ["#", "#", "#"] },
+                { en: "Smart Charts", hi: "स्मार्ट चार्ट", links: ["#", "#", "#"] },
+                { en: "Ways to Multiply", hi: "गुणा और भाग के तरीके", links: ["#", "#", "#"] },
+                { en: "How Big? How Heavy?", hi: "कितना बड़ा? कितना भारी?", links: ["#", "#", "#"] }
             ],
             "EVS": [
-                ["Super Senses", ["#", "#", "#"]],
-                ["Snake Charmer Story", ["#", "#", "#"]],
-                ["Tasting to Digesting", ["#", "#", "#"]],
-                ["Mangoes Year Round", ["#", "#", "#"]],
-                ["Seeds and Seeds", ["#", "#", "#"]],
-                ["Every Drop Counts", ["#", "#", "#"]],
-                ["Experiments with Water", ["#", "#", "#"]],
-                ["A Treat for Mosquitoes", ["#", "#", "#"]],
-                ["Up You Go!", ["#", "#", "#"]],
-                ["Walls Tell Stories", ["#", "#", "#"]],
-                ["Sunita in Space", ["#", "#", "#"]],
-                ["What if it Finishes?", ["#", "#", "#"]],
-                ["A Shelter so High!", ["#", "#", "#"]],
-                ["When Earth Shook", ["#", "#", "#"]],
-                ["Blow Hot, Blow Cold", ["#", "#", "#"]]
+                { en: "Super Senses", hi: "कैसे पहचाना चींटी ने दोस्त को?", links: ["#", "#", "#"] },
+                { en: "Snake Charmer Story", hi: "कहानी सपेरों की", links: ["#", "#", "#"] },
+                { en: "Tasting to Digesting", hi: "चखने से पचने तक", links: ["#", "#", "#"] },
+                { en: "Mangoes Year Round", hi: "खाएँ आम बारहों महीने", links: ["#", "#", "#"] },
+                { en: "Seeds and Seeds", hi: "बीज, बीज, बीज", links: ["#", "#", "#"] },
+                { en: "Every Drop Counts", hi: "बूँद-बूँद, दरिया-दरिया", links: ["#", "#", "#"] },
+                { en: "Experiments with Water", hi: "पानी के प्रयोग", links: ["#", "#", "#"] },
+                { en: "A Treat for Mosquitoes", hi: "मच्छरों की दावत", links: ["#", "#", "#"] },
+                { en: "Up You Go!", hi: "डायरी: कमर सीधी, ऊपर चढ़ो!", links: ["#", "#", "#"] },
+                { en: "Walls Tell Stories", hi: "बोलती इमारतें", links: ["#", "#", "#"] },
+                { en: "Sunita in Space", hi: "सुनीता अंतरिक्ष में", links: ["#", "#", "#"] },
+                { en: "What if it Finishes?", hi: "खत्म हो जाए तो...?", links: ["#", "#", "#"] },
+                { en: "A Shelter so High!", hi: "बसेरा ऊँचाई पर", links: ["#", "#", "#"] },
+                { en: "When Earth Shook", hi: "जब धरती काँपी", links: ["#", "#", "#"] },
+                { en: "Blow Hot, Blow Cold", hi: "उसी से ठंडा, उसी से गर्म", links: ["#", "#", "#"] }
             ],
             "English": [
-                ["Ice-cream Man", ["#", "#", "#"]],
-                ["Wonderful Waste", ["#", "#", "#"]],
-                ["Flying Together", ["#", "#", "#"]],
-                ["Teamwork", ["#", "#", "#"]],
-                ["My Shadow", ["#", "#", "#"]],
-                ["Robinson Crusoe", ["#", "#", "#"]],
-                ["Crying", ["#", "#", "#"]],
-                ["My Elder Brother", ["#", "#", "#"]],
-                ["The Talkative Barber", ["#", "#", "#"]]
+                { en: "Ice-cream Man", hi: "आइसक्रीम मैन", links: ["#", "#", "#"] },
+                { en: "Wonderful Waste", hi: "वंडरफुल वेस्ट", links: ["#", "#", "#"] },
+                { en: "Flying Together", hi: "फ्लाइंग टुगेदर", links: ["#", "#", "#"] },
+                { en: "Teamwork", hi: "टीमवर्क", links: ["#", "#", "#"] },
+                { en: "My Shadow", hi: "माई शैडो", links: ["#", "#", "#"] },
+                { en: "Robinson Crusoe", hi: "रॉबिन्सन क्रूसो", links: ["#", "#", "#"] },
+                { en: "Crying", hi: "क्राइंग", links: ["#", "#", "#"] },
+                { en: "My Elder Brother", hi: "बड़े भाई साहब", links: ["#", "#", "#"] },
+                { en: "The Talkative Barber", hi: "बातूनी नाई", links: ["#", "#", "#"] }
             ],
             "Hindi": [
-                ["Raakh ki Rassi", ["#", "#", "#"]],
-                ["Faslo ke Tyohar", ["#", "#", "#"]],
-                ["Khilaunewala", ["#", "#", "#"]],
-                ["Nanha Fankar", ["#", "#", "#"]],
-                ["Chitthi ka Safar", ["#", "#", "#"]],
-                ["Dakiyaki Kahani", ["#", "#", "#"]]
+                { en: "Raakh ki Rassi", hi: "राख की रस्सी", links: ["#", "#", "#"] },
+                { en: "Faslo ke Tyohar", hi: "फसलों के त्योहार", links: ["#", "#", "#"] },
+                { en: "Khilaunewala", hi: "खिलौनेवाला", links: ["#", "#", "#"] },
+                { en: "Nanha Fankar", hi: "नन्हा फनकार", links: ["#", "#", "#"] },
+                { en: "Chitthi ka Safar", hi: "चिट्ठी का सफर", links: ["#", "#", "#"] },
+                { en: "Dakiyaki Kahani", hi: "डाकिए की कहानी", links: ["#", "#", "#"] }
             ]
         };
 
+        function toggleMed(med) {
+            currentMedium = med;
+            document.getElementById('enBtn').classList.toggle('active', med === 'en');
+            document.getElementById('hiBtn').classList.toggle('active', med === 'hi');
+            document.getElementById('search').placeholder = UI_TEXT[med].search;
+            init();
+        }
+
         function init() {
             const grid = document.getElementById('mainGrid');
+            const subTabs = document.getElementById('subTabs');
             grid.innerHTML = '';
+            subTabs.innerHTML = '';
             
+            const rawSubs = ["Maths", "EVS", "English", "Hindi"];
+            const displaySubs = UI_TEXT[currentMedium].subjects;
+
+            rawSubs.forEach((sub, index) => {
+                const btn = document.createElement('button');
+                btn.className = `btn-sub ${sub === activeSubject ? 'active' : ''}`;
+                btn.innerText = displaySubs[index];
+                btn.onclick = (e) => switchS(sub, e.target);
+                subTabs.appendChild(btn);
+            });
+
             Object.keys(DB).forEach(sub => {
                 DB[sub].forEach((chData, i) => {
-                    const chapter = chData[0];
-                    const links = chData[1];
+                    const chapter = chData[currentMedium];
+                    const links = chData.links;
                     const id = `${sub.substring(0,2)}-${i}`;
                     
                     const card = document.createElement('div');
                     card.className = `card ${sub}-key hub-card`;
-                    if(sub === 'Maths') card.classList.add('active');
+                    if(sub === activeSubject) card.classList.add('active');
 
                     card.innerHTML = `
                         <h3 style="margin:0; font-size:1.2rem;">${chapter}</h3>
@@ -183,6 +213,7 @@
         }
 
         function switchS(s, btn) {
+            activeSubject = s;
             document.querySelectorAll('.btn-sub').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             document.querySelectorAll('.card').forEach(c => {
