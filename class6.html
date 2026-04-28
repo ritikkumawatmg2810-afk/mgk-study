@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MGK Class 6 | Official NCERT Hub</title>
+    <title>MGK Class 6 All Subjects Portal</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,49 +13,46 @@
 
         body {
             margin: 0; font-family: 'Outfit', sans-serif; background: #020617; color: #fff;
-            background-image: radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
-                              radial-gradient(circle at 90% 90%, rgba(0, 242, 254, 0.05) 0%, transparent 40%);
-            background-attachment: fixed; min-height: 100vh; overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 90%, rgba(0, 242, 254, 0.08) 0%, transparent 40%);
+            background-attachment: fixed; min-height: 100vh;
         }
 
         header {
-            position: sticky; top: 0; z-index: 2000; background: rgba(2, 6, 23, 0.9);
+            position: sticky; top: 0; z-index: 2000; background: rgba(2, 6, 23, 0.85);
             backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 15px; text-align: center;
         }
 
-        .lang-toggle {
-            display: flex; justify-content: center; gap: 5px; background: rgba(255,255,255,0.05);
-            width: fit-content; margin: 0 auto 15px; padding: 5px; border-radius: 50px; border: 1px solid var(--border);
-        }
-        .lang-btn {
-            padding: 8px 20px; border-radius: 50px; border: none; background: transparent;
-            color: #94a3b8; font-weight: 800; cursor: pointer; transition: 0.3s; font-size: 11px;
-        }
-        .lang-btn.active { background: var(--primary); color: white; box-shadow: 0 0 15px rgba(139, 92, 246, 0.5); }
+        .med-toggle { display: flex; justify-content: center; gap: 5px; margin-bottom: 15px; background: rgba(255,255,255,0.05); width: fit-content; margin: 0 auto 15px; padding: 5px; border-radius: 50px; border: 1px solid var(--border); }
+        .med-btn { padding: 6px 15px; border-radius: 50px; border: none; background: transparent; color: #94a3b8; font-weight: 800; cursor: pointer; transition: 0.3s; font-size: 11px; }
+        .med-btn.active { background: var(--primary); color: white; }
 
-        .logo { font-size: 1.8rem; font-weight: 900; background: linear-gradient(to right, #fff, var(--primary), var(--neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .logo { font-size: 1.8rem; font-weight: 900; background: linear-gradient(to right, #fff, var(--primary), var(--neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px; }
 
-        .sub-nav { display: flex; overflow-x: auto; gap: 8px; padding: 10px; scrollbar-width: none; border-top: 1px solid var(--border); }
+        .search-box { width: 90%; max-width: 500px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 12px 20px; border-radius: 50px; color: #fff; outline: none; margin-bottom: 15px; }
+
+        .sub-nav { display: flex; overflow-x: auto; gap: 10px; padding: 5px 10px; scrollbar-width: none; justify-content: center; }
         .sub-nav::-webkit-scrollbar { display: none; }
 
         .btn-sub { flex: 0 0 auto; padding: 10px 22px; border-radius: 50px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #94a3b8; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 12px; }
-        .btn-sub.active { background: #fff; color: #000; }
+        .btn-sub.active { background: #fff; color: #000; box-shadow: 0 10px 25px rgba(255,255,255,0.2); }
 
         .portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 25px; padding: 25px; max-width: 1500px; margin: auto; }
 
-        .card { background: rgba(255,255,255,0.03); backdrop-filter: blur(15px); border: 1px solid var(--border); border-radius: 35px; padding: 25px; display: none; border-top: 3px solid var(--primary); }
-        .card.active { display: block; animation: fadeInUp 0.4s ease forwards; }
+        .card { background: rgba(255,255,255,0.03); backdrop-filter: blur(15px); border: 1px solid var(--border); border-radius: 35px; padding: 25px; display: none; border-top: 2px solid var(--primary); }
+        .card.active { display: block; animation: fadeInUp 0.5s ease; }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .option-tabs { display: grid; grid-template-columns: 1fr 1fr; background: rgba(0,0,0,0.4); padding: 5px; border-radius: 20px; margin: 20px 0; gap: 5px; }
-        .opt-btn { border: none; background: transparent; color: #64748b; padding: 12px; border-radius: 16px; font-weight: 900; font-size: 12px; cursor: pointer; }
+        .opt-tabs { display: grid; grid-template-columns: 1fr 1fr; background: rgba(0,0,0,0.4); padding: 5px; border-radius: 20px; margin: 20px 0; gap: 5px; }
+        .opt-btn { border: none; background: transparent; color: #64748b; padding: 12px; border-radius: 16px; font-weight: 900; font-size: 11px; cursor: pointer; }
         .opt-btn.book-on { background: var(--book); color: #000; }
         .opt-btn.notes-on { background: var(--notes); color: #000; }
 
         .vault { background: rgba(0,0,0,0.25); border-radius: 25px; padding: 12px; max-height: 350px; overflow-y: auto; }
         .pdf-item { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); padding: 15px 20px; border-radius: 20px; margin-bottom: 10px; text-decoration: none; color: #cbd5e1; font-size: 14px; font-weight: 600; border: 1px solid transparent; }
-        .pdf-item:hover { border-color: var(--primary); color: #fff; background: rgba(255,255,255,0.08); }
+        .pdf-item:hover { background: rgba(255,255,255,0.08); border-color: var(--primary); color: #fff; }
+        .pdf-item i { color: var(--neon); font-style: normal; font-weight: 900; font-size: 11px; border: 1px solid var(--neon); padding: 2px 6px; border-radius: 5px; }
 
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
@@ -64,123 +61,169 @@
 <body>
 
     <header>
-        <div class="lang-toggle">
-            <button class="lang-btn active" id="enBtn" onclick="setLang('en')">English Medium</button>
-            <button class="lang-btn" id="hiBtn" onclick="setLang('hi')">हिंदी माध्यम</button>
+        <div class="med-toggle">
+            <button class="med-btn active" id="enBtn" onclick="toggleMed('en')">English</button>
+            <button class="med-btn" id="hiBtn" onclick="toggleMed('hi')">हिंदी</button>
         </div>
-        <div class="logo">MGK CLASS 6 PORTAL</div>
-        <div class="sub-nav" id="subjectNav"></div>
+        <div class="logo">MGK CLASS 6 MASTER</div>
+        <input type="text" class="search-box" id="search" placeholder="Search Chapter..." onkeyup="filter()">
+        <div class="sub-nav" id="subTabs"></div>
     </header>
 
     <div class="portal-grid" id="mainGrid"></div>
 
     <script>
-        let currentLang = 'en';
-        let currentSub = 'Maths';
+        let currentMedium = 'en';
+        let activeSubject = 'Maths';
 
         const UI = {
-            en: { book: "📖 BOOK PDF", notes: "📝 STUDY NOTES", unit: "Unit", open: "VIEW" },
+            en: { book: "📖 BOOK PDF", notes: "📝 NOTES", unit: "Unit", open: "OPEN" },
             hi: { book: "📖 किताब PDF", notes: "📝 नोट्स", unit: "इकाई", open: "देखें" }
         };
 
         const DB = {
-            "Maths": {
-                en: ["Knowing Our Numbers", "Whole Numbers", "Playing with Numbers", "Basic Geometrical Ideas", "Understanding Elementary Shapes", "Integers", "Fractions", "Decimals", "Data Handling", "Mensuration", "Algebra", "Ratio and Proportion"],
-                hi: ["अपनी संख्याओं की जानकारी", "पूर्ण संख्याएँ", "संख्याओं के साथ खेलना", "आधारभूत ज्यामितीय अवधारणाएँ", "प्रारंभिक आकारों को समझना", "पूर्णांक", "भिन्न", "दशमलव", "आँकड़ों का प्रबंधन", "क्षेत्रमिति", "बीजगणित", "अनुपात और समानुपात"],
-                links: Array(12).fill(["#book", "#notes"])
-            },
-            "Science": {
-                en: ["Components of Food", "Sorting Materials into Groups", "Separation of Substances", "Getting to Know Plants", "Body Movements", "The Living Organisms", "Motion and Measurement of Distances", "Light, Shadows and Reflections", "Electricity and Circuits", "Fun with Magnets", "Air Around Us"],
-                hi: ["भोजन के घटक", "वस्तुओं के समूह बनाना", "पदार्थों का पृथक्करण", "पौधों को जानिए", "शरीर में गति", "सजीव एवं उनका परिवेश", "गति एवं दूरियों का मापन", "प्रकाश - छायाएँ एवं परावर्तन", "विधुत तथा परिपथ", "चुंबकों द्वारा मनोरंजन", "हमारे चारों ओर वायु"],
-                links: Array(11).fill(["#book", "#notes"])
-            },
-            "History": {
-                en: ["What, Where, How and When?", "From Hunting-Gathering to Growing Food", "In the Earliest Cities", "What Books and Burials Tell Us", "Kingdoms, Kings and an Early Republic", "New Questions and Ideas", "Ashoka, The Emperor Who Gave Up War", "Vital Villages, Thriving Towns"],
-                hi: ["क्या, कहाँ, कैसे और कब?", "आखेट-खाद्य संग्रह से भोजन उत्पादन तक", "आरंभिक नगर", "क्या बताती हैं हमें किताबें और कब्रें", "राज्य, राजा और एक प्राचीन गणराज्य", "नये प्रश्न नये विचार", "अशोक: एक अनोखा सम्राट जिसने युद्ध का त्याग किया", "खुशहाल गाँव और समृद्ध शहर"],
-                links: Array(8).fill(["#book", "#notes"])
-            },
-            "Geography": {
-                en: ["The Earth in the Solar System", "Globe: Latitudes and Longitudes", "Motions of the Earth", "Maps", "Major Domains of the Earth", "Our Country: India"],
-                hi: ["सौरमंडल में पृथ्वी", "ग्लोब: अक्षांश एवं देशांतर", "पृथ्वी की गतियाँ", "मानचित्र", "पृथ्वी के प्रमुख परिमंडल", "हमारा देश: भारत"],
-                links: Array(6).fill(["#book", "#notes"])
-            },
-            "Civics": {
-                en: ["Understanding Diversity", "Diversity and Discrimination", "What is Government?", "Key Elements of a Democratic Government", "Panchayati Raj", "Rural Administration", "Urban Administration", "Rural Livelihoods", "Urban Livelihoods"],
-                hi: ["विविधता की समझ", "विविधता एवं भेदभाव", "सरकार क्या है?", "लोकतांत्रिक सरकार के मुख्य तत्व", "पंचायती राज", "ग्रामीण प्रशासन", "नगर प्रशासन", "ग्रामीण क्षेत्र में आजीविका", "शहरी क्षेत्र में आजीविका"],
-                links: Array(9).fill(["#book", "#notes"])
-            },
-            "English": {
-                en: ["Who Did Patrick's Homework?", "How the Dog Found Himself a New Master!", "Taro's Reward", "An Indian-American Woman in Space: Kalpana Chawla", "A Different Kind of School", "Who I Am", "Fair Play", "A Game of Chance", "Desert Animals", "The Banyan Tree"],
-                hi: ["पैट्रिक का होमवर्क किसने किया?", "कुत्ते को नया मालिक कैसे मिला!", "तारो का इनाम", "अंतरिक्ष में भारतीय-अमेरिकी महिला", "एक अलग तरह का स्कूल", "मैं कौन हूँ", "उचित खेल", "भाग्य का खेल", "रेगिस्तानी जानवर", "बरगद का पेड़"],
-                links: Array(10).fill(["#book", "#notes"])
-            }
+            "Maths": [
+                { en: "Knowing Our Numbers", hi: "अपनी संख्याओं की जानकारी", links: ["#", "#"] },
+                { en: "Whole Numbers", hi: "पूर्ण संख्याएँ", links: ["#", "#"] },
+                { en: "Playing with Numbers", hi: "संख्याओं के साथ खेलना", links: ["#", "#"] },
+                { en: "Basic Geometrical Ideas", hi: "आधारभूत ज्यामितीय अवधारणाएँ", links: ["#", "#"] },
+                { en: "Understanding Elementary Shapes", hi: "प्रारंभिक आकारों को समझना", links: ["#", "#"] },
+                { en: "Integers", hi: "पूर्णांक", links: ["#", "#"] },
+                { en: "Fractions", hi: "भिन्न", links: ["#", "#"] },
+                { en: "Decimals", hi: "दशमलव", links: ["#", "#"] },
+                { en: "Data Handling", hi: "आँकड़ों का प्रबंधन", links: ["#", "#"] },
+                { en: "Mensuration", hi: "क्षेत्रमिति", links: ["#", "#"] },
+                { en: "Algebra", hi: "बीजगणित", links: ["#", "#"] },
+                { en: "Ratio and Proportion", hi: "अनुपात और समानुपात", links: ["#", "#"] }
+            ],
+            "Science": [
+                { en: "Components of Food", hi: "भोजन के घटक", links: ["#", "#"] },
+                { en: "Sorting Materials into Groups", hi: "वस्तुओं के समूह बनाना", links: ["#", "#"] },
+                { en: "Separation of Substances", hi: "पदार्थों का पृथक्करण", links: ["#", "#"] },
+                { en: "Getting to Know Plants", hi: "पौधों को जानिए", links: ["#", "#"] },
+                { en: "Body Movements", hi: "शरीर में गति", links: ["#", "#"] },
+                { en: "Living Organisms & Surroundings", hi: "सजीव एवं उनका परिवेश", links: ["#", "#"] },
+                { en: "Motion and Measurement", hi: "गति एवं दूरियों का मापन", links: ["#", "#"] },
+                { en: "Light, Shadows and Reflections", hi: "प्रकाश - छायाएँ एवं परावर्तन", links: ["#", "#"] },
+                { en: "Electricity and Circuits", hi: "विधुत तथा परिपथ", links: ["#", "#"] },
+                { en: "Fun with Magnets", hi: "चुंबकों द्वारा मनोरंजन", links: ["#", "#"] },
+                { en: "Air Around Us", hi: "हमारे चारों ओर वायु", links: ["#", "#"] }
+            ],
+            "History": [
+                { en: "What, Where, How and When?", hi: "क्या, कहाँ, कैसे और कब?", links: ["#", "#"] },
+                { en: "Hunting to Growing Food", hi: "आखेट से भोजन उत्पादन तक", links: ["#", "#"] },
+                { en: "In the Earliest Cities", hi: "आरंभिक नगर", links: ["#", "#"] },
+                { en: "What Books/Burials Tell Us", hi: "क्या बताती हैं किताबें और कब्रें", links: ["#", "#"] },
+                { en: "Kingdoms, Kings and Republic", hi: "राज्य, राजा और एक प्राचीन गणराज्य", links: ["#", "#"] },
+                { en: "New Questions and Ideas", hi: "नये प्रश्न नये विचार", links: ["#", "#"] },
+                { en: "From Kingdom to Empire", hi: "राज्य से साम्राज्य तक", links: ["#", "#"] },
+                { en: "Villages, Towns and Trade", hi: "खुशहाल गाँव और समृद्ध शहर", links: ["#", "#"] }
+            ],
+            "Geography": [
+                { en: "Earth in the Solar System", hi: "सौरमंडल में पृथ्वी", links: ["#", "#"] },
+                { en: "Globe: Latitudes/Longitudes", hi: "ग्लोब: अक्षांश एवं देशांतर", links: ["#", "#"] },
+                { en: "Motions of the Earth", hi: "पृथ्वी की गतियाँ", links: ["#", "#"] },
+                { en: "Maps", hi: "मानचित्र", links: ["#", "#"] },
+                { en: "Major Domains of Earth", hi: "पृथ्वी के प्रमुख परिमंडल", links: ["#", "#"] },
+                { en: "Our Country: India", hi: "हमारा देश: भारत", links: ["#", "#"] }
+            ],
+            "Civics": [
+                { en: "Understanding Diversity", hi: "विविधता की समझ", links: ["#", "#"] },
+                { en: "Diversity and Discrimination", hi: "विविधता एवं भेदभाव", links: ["#", "#"] },
+                { en: "What is Government?", hi: "सरकार क्या है?", links: ["#", "#"] },
+                { en: "Panchayati Raj", hi: "पंचायती राज", links: ["#", "#"] },
+                { en: "Rural Administration", hi: "ग्रामीण प्रशासन", links: ["#", "#"] },
+                { en: "Urban Administration", hi: "नगर प्रशासन", links: ["#", "#"] },
+                { en: "Rural Livelihoods", hi: "ग्रामीण क्षेत्र में आजीवika", links: ["#", "#"] },
+                { en: "Urban Livelihoods", hi: "शहरी क्षेत्र में आजीविका", links: ["#", "#"] }
+            ],
+            "English": [
+                { en: "Who Did Patrick's Homework?", hi: "पैट्रिक का होमवर्क किसने किया?", links: ["#", "#"] },
+                { en: "How Dog Found a Master", hi: "कुत्ते को नया मालिक कैसे मिला", links: ["#", "#"] },
+                { en: "Taro's Reward", hi: "तारो का इनाम", links: ["#", "#"] },
+                { en: "An Indian Woman in Space", hi: "अंतरिक्ष में भारतीय महिला", links: ["#", "#"] },
+                { en: "A Different Kind of School", hi: "एक अलग तरह का स्कूल", links: ["#", "#"] },
+                { en: "Who I Am", hi: "मैं कौन हूँ", links: ["#", "#"] },
+                { en: "Fair Play", hi: "उचित खेल", links: ["#", "#"] },
+                { en: "The Banyan Tree", hi: "बरगद का पेड़", links: ["#", "#"] }
+            ]
         };
 
-        function setLang(l) {
-            currentLang = l;
-            document.getElementById('enBtn').className = l === 'en' ? 'lang-btn active' : 'lang-btn';
-            document.getElementById('hiBtn').className = l === 'hi' ? 'lang-btn active' : 'lang-btn';
-            renderNav();
-            renderGrid();
+        function toggleMed(med) {
+            currentMedium = med;
+            document.getElementById('enBtn').classList.toggle('active', med === 'en');
+            document.getElementById('hiBtn').classList.toggle('active', med === 'hi');
+            init();
         }
 
-        function renderNav() {
-            const nav = document.getElementById('subjectNav');
-            nav.innerHTML = '';
-            const subsEn = Object.keys(DB);
-            const subsHi = ["गणित", "विज्ञान", "इतिहास", "भूगोल", "नागरिक शास्त्र", "अंग्रेजी"];
-            
-            subsEn.forEach((s, i) => {
-                const btn = document.createElement('button');
-                btn.className = `btn-sub ${s === currentSub ? 'active' : ''}`;
-                btn.innerText = currentLang === 'en' ? s : subsHi[i];
-                btn.onclick = () => { currentSub = s; renderNav(); renderGrid(); };
-                nav.appendChild(btn);
-            });
-        }
-
-        function renderGrid() {
+        function init() {
             const grid = document.getElementById('mainGrid');
+            const subTabs = document.getElementById('subTabs');
             grid.innerHTML = '';
-            const chapters = DB[currentSub][currentLang];
-            const links = DB[currentSub].links;
+            subTabs.innerHTML = '';
+            
+            const rawSubs = Object.keys(DB);
+            rawSubs.forEach(sub => {
+                const btn = document.createElement('button');
+                btn.className = `btn-sub ${sub === activeSubject ? 'active' : ''}`;
+                btn.innerText = sub;
+                btn.onclick = (e) => switchS(sub, e.target);
+                subTabs.appendChild(btn);
+            });
 
-            chapters.forEach((ch, i) => {
-                const id = `vault-${i}`;
-                const cardLinks = links[i] || ["#", "#"];
+            DB[activeSubject].forEach((chData, i) => {
+                const chapter = chData[currentMedium];
+                const links = chData.links;
+                const id = `ch-${i}`;
+                
                 const card = document.createElement('div');
-                card.className = 'card active';
+                card.className = `card active hub-card`;
+
                 card.innerHTML = `
-                    <h3 style="margin:0; font-size:1.1rem; color:var(--neon); min-height:45px;">${ch}</h3>
-                    <div class="option-tabs">
-                        <button class="opt-btn book-on" onclick="updateV('${id}', '${cardLinks[0]}', this, 'book')">${UI[currentLang].book}</button>
-                        <button class="opt-btn" onclick="updateV('${id}', '${cardLinks[1]}', this, 'notes')">${UI[currentLang].notes}</button>
+                    <h3 style="margin:0; font-size:1.1rem; color:var(--neon); min-height:45px;">${chapter}</h3>
+                    <div class="opt-tabs">
+                        <button class="opt-btn book-on" onclick="setV('${id}', '${links[0]}', this, 'book')">${UI[currentMedium].book}</button>
+                        <button class="opt-btn" onclick="setV('${id}', '${links[1]}', this, 'notes')">${UI[currentMedium].notes}</button>
                     </div>
-                    <div class="vault" id="${id}">${genSlots(cardLinks[0], UI[currentLang].book)}</div>
+                    <div class="vault" id="v-${id}">
+                        ${gen(links[0], UI[currentMedium].book)}
+                    </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function genSlots(url, typeName) {
+        function gen(url, type) {
             let h = '';
             for(let i=1; i<=26; i++) {
                 h += `<a href="${url}" target="_blank" class="pdf-item">
-                        <span>📄 ${typeName} - ${UI[currentLang].unit} ${i}</span>
-                        <span style="color:var(--neon); font-size:11px;">${UI[currentLang].open} →</span>
+                        <span>📄 ${type} - ${UI[currentMedium].unit} ${i}</span>
+                        <i>${UI[currentMedium].open} →</i>
                       </a>`;
             }
             return h;
         }
 
-        function updateV(id, url, btn, type) {
+        function setV(id, url, btn, type) {
             const row = btn.parentElement.querySelectorAll('.opt-btn');
             row.forEach(b => b.className = 'opt-btn');
             btn.classList.add(type === 'book' ? 'book-on' : 'notes-on');
-            document.getElementById(id).innerHTML = genSlots(url, btn.innerText);
+            document.getElementById(`v-${id}`).innerHTML = gen(url, btn.innerText);
         }
 
-        setLang('en');
+        function switchS(s, btn) {
+            activeSubject = s;
+            init();
+        }
+
+        function filter() {
+            let v = document.getElementById('search').value.toLowerCase();
+            document.querySelectorAll('.hub-card').forEach(c => {
+                c.style.display = c.innerText.toLowerCase().includes(v) ? "block" : "none";
+            });
+        }
+
+        init();
     </script>
 </body>
 </html>
