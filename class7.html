@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NEURAL-X | BILINGUAL OMNI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-flux: #00f2fe;
+            --plasma-purple: #8b5cf6;
+            --void: #020617;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+
+        body {
+            margin: 0; font-family: 'Space Grotesk', sans-serif;
+            background: var(--void); color: #fff;
+            min-height: 100vh; overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 242, 254, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 15px; text-align: center;
+        }
+
+        .omni-logo {
+            font-family: 'Syncopate', sans-serif; font-size: 1.5rem;
+            letter-spacing: 10px; font-weight: 900;
+            background: linear-gradient(90deg, #fff, var(--neon-flux), var(--plasma-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 15px; filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.4));
+        }
+
+        /* 🌐 Language Switcher */
+        .lang-control {
+            display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;
+        }
+        .l-btn {
+            background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8; padding: 8px 20px; border-radius: 50px;
+            font-weight: 700; font-size: 10px; cursor: pointer; transition: 0.4s;
+        }
+        .l-btn.active { background: #fff; color: #000; box-shadow: 0 0 20px #fff; }
+
+        .search-neural { width: 90%; max-width: 500px; margin: 0 auto; }
+        .search-neural input {
+            width: 100%; background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px; border-radius: 100px; color: #fff; text-align: center;
+        }
+
+        .sync-nav { display: flex; overflow-x: auto; gap: 10px; padding: 20px; scrollbar-width: none; }
+        .sync-nav::-webkit-scrollbar { display: none; }
+
+        .sync-pill {
+            flex: 0 0 auto; padding: 10px 22px; border-radius: 100px;
+            background: var(--glass); color: #94a3b8; font-size: 11px; font-weight: 700;
+            cursor: pointer; transition: 0.3s; border: 1px solid transparent;
+        }
+        .sync-pill.active { background: var(--plasma-purple); color: #fff; border-color: var(--neon-flux); }
+
+        .portal-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px; padding: 20px; max-width: 1400px; margin: auto;
+        }
+
+        .neural-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 40px; padding: 30px; transition: 0.5s; position: relative;
+        }
+        .neural-card:hover { transform: translateY(-10px); border-color: var(--neon-flux); }
+
+        .ch-name { font-size: 1.3rem; font-weight: 700; margin: 20px 0; line-height: 1.3; }
+
+        .btn-matrix { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .matrix-btn {
+            padding: 12px; border-radius: 15px; background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05); color: #fff; font-size: 9px;
+            font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        .matrix-btn.active.book { background: var(--neon-flux); color: #000; }
+        .matrix-btn.active.notes { background: var(--plasma-purple); color: #fff; }
+
+        .stream-link {
+            display: block; width: 100%; padding: 15px; border-radius: 15px;
+            background: #fff; color: #000; text-decoration: none; font-weight: 700;
+            text-align: center; font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="omni-logo">NEURAL-X 7</div>
+        <div class="lang-control">
+            <button class="l-btn active" id="enBtn" onclick="setLang('en')">ENGLISH</button>
+            <button class="l-btn" id="hiBtn" onclick="setLang('hi')">हिंदी</button>
+        </div>
+        <div class="search-neural"><input type="text" id="search" placeholder="SEARCH..." onkeyup="filter()"></div>
+        <div class="sync-nav" id="subTabs"></div>
+    </header>
+
+    <div class="portal-grid" id="mainGrid"></div>
+
+    <script>
+        let curL = 'en'; 
+        let curS = 'SCIENCE';
+
+        const UI = {
+            en: { book: "NCERT BOOK", notes: "NEURAL NOTES", open: "ACCESS DATA", search: "SEARCH CHAPTER..." },
+            hi: { book: "NCERT किताब", notes: "न्यूरल नोट्स", open: "डेटा खोलें", search: "अध्याय खोजें..." }
+        };
+
+        const DATA = {
+            "SCIENCE": [
+                { en: "Nutrition in Plants", hi: "पादपों में पोषण", l: ["#","#"] },
+                { en: "Nutrition in Animals", hi: "प्राणियों में पोषण", l: ["#","#"] },
+                { en: "Heat", hi: "ऊष्मा", l: ["#","#"] },
+                { en: "Acids, Bases and Salts", hi: "अम्ल, क्षारक और लवण", l: ["#","#"] },
+                { en: "Physical and Chemical Changes", hi: "भौतिक एवं रासायनिक परिवर्तन", l: ["#","#"] },
+                { en: "Respiration in Organisms", hi: "जीवों में श्वसन", l: ["#","#"] },
+                { en: "Transportation in Animals & Plants", hi: "जंतुओं और पादप में परिवहन", l: ["#","#"] },
+                { en: "Reproduction in Plants", hi: "पादप में जनन", l: ["#","#"] },
+                { en: "Motion and Time", hi: "गति एवं समय", l: ["#","#"] },
+                { en: "Electric Current and its Effects", hi: "विधुत धारा और इसके प्रभाव", l: ["#","#"] },
+                { en: "Light", hi: "प्रकाश", l: ["#","#"] },
+                { en: "Forests: Our Lifeline", hi: "वन: हमारी जीवन रेखा", l: ["#","#"] }
+            ],
+            "MATHS": [
+                { en: "Integers", hi: "पूर्णांक", l: ["#","#"] },
+                { en: "Fractions and Decimals", hi: "भिन्न एवं दशमलव", l: ["#","#"] },
+                { en: "Data Handling", hi: "आँकड़ों का प्रबंधन", l: ["#","#"] },
+                { en: "Simple Equations", hi: "सरल समीकरण", l: ["#","#"] },
+                { en: "Lines and Angles", hi: "रेखा एवं कोण", l: ["#","#"] },
+                { en: "The Triangle and its Properties", hi: "त्रिभुज और उसके गुण", l: ["#","#"] },
+                { en: "Comparing Quantities", hi: "राशियों की तुलना", l: ["#","#"] },
+                { en: "Rational Numbers", hi: "परिमेय संख्याएँ", l: ["#","#"] },
+                { en: "Perimeter and Area", hi: "परिमाप और क्षेत्रफल", l: ["#","#"] },
+                { en: "Algebraic Expressions", hi: "बीजीय व्यंजक", l: ["#","#"] },
+                { en: "Exponents and Powers", hi: "घातांक और घात", l: ["#","#"] }
+            ],
+            "HISTORY": [
+                { en: "Tracing Changes", hi: "हज़ार वर्षों के दौरान परिवर्तन", l: ["#","#"] },
+                { en: "New Kings and Kingdoms", hi: "नये राजा और उनके राज्य", l: ["#","#"] },
+                { en: "The Delhi Sultans", hi: "दिल्ली के सुल्तान", l: ["#","#"] },
+                { en: "The Mughal Empire", hi: "मुग़ल साम्राज्य", l: ["#","#"] },
+                { en: "Tribes and Nomads", hi: "जनजातियाँ और खानाबदोश", l: ["#","#"] },
+                { en: "Devotional Paths", hi: "ईश्वर से अनुराग", l: ["#","#"] }
+            ],
+            "GEOGRAPHY": [
+                { en: "Environment", hi: "पर्यावरण", l: ["#","#"] },
+                { en: "Inside Our Earth", hi: "हमारी पृथ्वी के अंदर", l: ["#","#"] },
+                { en: "Our Changing Earth", hi: "हमारी बदलती पृथ्वी", l: ["#","#"] },
+                { en: "Air", hi: "वायु", l: ["#","#"] },
+                { en: "Water", hi: "जल", l: ["#","#"] },
+                { en: "Life in Deserts", hi: "रेगिस्तान में जीवन", l: ["#","#"] }
+            ],
+            "CIVICS": [
+                { en: "On Equality", hi: "समानता", l: ["#","#"] },
+                { en: "Role of Govt in Health", hi: "स्वास्थ्य में सरकार की भूमिका", l: ["#","#"] },
+                { en: "How State Govt Works", hi: "राज्य शासन कैसे काम करता है", l: ["#","#"] },
+                { en: "Women Change the World", hi: "औरतों ने बदली दुनिया", l: ["#","#"] },
+                { en: "Understanding Media", hi: "संचार माध्यमों को समझना", l: ["#","#"] }
+            ],
+            "ENGLISH": [
+                { en: "Three Questions", hi: "Three Questions", l: ["#","#"] },
+                { en: "A Gift of Chappals", hi: "A Gift of Chappals", l: ["#","#"] },
+                { en: "Gopal and Hilsa Fish", hi: "Gopal and Hilsa Fish", l: ["#","#"] },
+                { en: "The Ashes", hi: "The Ashes", l: ["#","#"] },
+                { en: "Quality", hi: "Quality", l: ["#","#"] }
+            ]
+        };
+
+        const SUB_HI = { "SCIENCE":"विज्ञान", "MATHS":"गणित", "HISTORY":"इतिहास", "GEOGRAPHY":"भूगोल", "CIVICS":"नागरिक शास्त्र", "ENGLISH":"अंग्रेजी" };
+
+        function setLang(l) {
+            curL = l;
+            document.getElementById('enBtn').classList.toggle('active', l==='en');
+            document.getElementById('hiBtn').classList.toggle('active', l==='hi');
+            document.getElementById('search').placeholder = UI[l].search;
+            render();
+        }
+
+        function render() {
+            const grid = document.getElementById('mainGrid');
+            const tabs = document.getElementById('subTabs');
+            grid.innerHTML = ''; tabs.innerHTML = '';
+
+            Object.keys(DATA).forEach(s => {
+                const b = document.createElement('div');
+                b.className = `sync-pill ${s === curS ? 'active' : ''}`;
+                b.innerText = curL === 'hi' ? SUB_HI[s] : s;
+                b.onclick = () => { curS = s; render(); };
+                tabs.appendChild(b);
+            });
+
+            DATA[curS].forEach((ch, i) => {
+                const card = document.createElement('div');
+                card.className = 'neural-card item';
+                card.innerHTML = `
+                    <div class="ch-name">${ch[curL]}</div>
+                    <div class="btn-matrix">
+                        <button class="matrix-btn active book" onclick="sync('${curS}',${i},0,this)">${UI[curL].book}</button>
+                        <button class="matrix-btn notes" onclick="sync('${curS}',${i},1,this)">${UI[curL].notes}</button>
+                    </div>
+                    <div id="h-${curS}-${i}"><a href="${ch.l[0]}" class="stream-link" target="_blank">${UI[curL].open}</a></div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function sync(s, ci, li, btn) {
+            btn.parentElement.querySelectorAll('.matrix-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(`h-${s}-${ci}`).innerHTML = `<a href="${DATA[s][ci].l[li]}" class="stream-link" target="_blank">${UI[curL].open}</a>`;
+        }
+
+        function filter() {
+            let v = document.getElementById('search').value.toLowerCase();
+            document.querySelectorAll('.item').forEach(el => el.style.display = el.innerText.toLowerCase().includes(v) ? 'block' : 'none');
+        }
+
+        setLang('en');
+    </script>
+</body>
+</html>
